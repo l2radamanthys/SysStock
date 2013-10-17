@@ -19,7 +19,14 @@ class Session extends CI_Controller {
     
     function login() 
     {
+        $data = array(
+            'page_title' => 'Iniciar Session',
+        );
         
+        $this->load->view('header', $data);
+        $this->load->view('user_menu/not-login');
+        $this->load->view('session/login');
+        $this->load->('footer');
     }
     
     
