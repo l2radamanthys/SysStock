@@ -6,10 +6,11 @@
 
 
 <content>
-    <div style="width: 180px; margin: 20px auto;">
-        <form action="" method="POST">
-            <h3>Iniciar Session</h3>    
-            
+    <div class="window" style="width: 220px; margin: 20px auto;">
+        <h3>Iniciar Session</h3> 
+        
+        <div class="win-cont">
+        <form action="" method="POST">       
             <p><label>Usuario:</label><br />
             <input type="text" name="username" />    
             </p>
@@ -18,7 +19,10 @@
             <input type="password" name="password" />
             </p>
             
-            <p style="text-align: center"><input type="Submit" value="Ingresar" /></p>
+            <p style="text-align: center">
+                <input type="Submit" value="Ingresar" />
+            </p>
         </form>
+        </div>
     </div>
 </content>

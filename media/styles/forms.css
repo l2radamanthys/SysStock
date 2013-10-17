@@ -16,8 +16,30 @@ input[type=submit] {
     font-size: 12pt !important;
 }
 
+label {
+    font-size: 10pt; 
+}
 
 .window {
+    border: 1px solid #AAA;
+    box-shadow: 0px 0px 15px #BBB;
+    //border-radius: 8px;
+    background-color: #0080C0;
+}
 
-box-shadow: inset 0px 0px 5px #AAA;
+.window h3 {
+    font-family: Verdana;
+    text-align: center;
+    font-weight: 100;
+    font-style: normal !important;
+    color: #DEDEDE;
+    margin-top: 10px;
+}
+
+
+.win-cont {
+    padding: 10px 10px;
+    background-color: #FFF;
+    //border-bottom-right-radius: 8px;
+    //border-bottom-left-radius: 8px;
 }
