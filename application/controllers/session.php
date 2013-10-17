@@ -14,7 +14,7 @@ class Session extends CI_Controller {
     
     function index()
     {
-        
+        echo "hola";
     }
     
     function login() 
@@ -26,7 +26,7 @@ class Session extends CI_Controller {
         $this->load->view('header', $data);
         $this->load->view('user_menu/not-login');
         $this->load->view('session/login');
-        $this->load->('footer');
+        $this->load->view('footer');
     }
     
     

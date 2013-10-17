@@ -1,0 +1,23 @@
+
+
+input[type=text], input[type=password] {
+    padding: 3px 5px;
+    margin: 2px;
+    box-shadow: inset 0px 0px 3px #AAA;
+    -webkit-box-shadow: inset 0px 0px 3px #AAA;
+    -moz-box-shadow: inset 0px 0px 3px #AAA;
+    border: 1px solid #AAA;
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+input[type=submit] {
+    font-size: 12pt !important;
+}
+
+
+.window {
+
+box-shadow: inset 0px 0px 5px #AAA;
+}
