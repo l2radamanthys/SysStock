@@ -6,6 +6,8 @@
     height: 40px; 
     /* el color de fondo */
     background: #EAEAEA;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
 
 /* cada item del menu */
@@ -42,8 +44,10 @@
 .menu li:last-child a{ border-right: none; }
   /* efecto hover cambia el color */
 .menu li:hover > a {
-    background-color: #C9C9C9;
+    background-color: rgb(230,245,255);//#0099ff;
     //color: #0099ff ;
+    font-weight:bold;
+    border-radius:5px;
 }
 
   /* los submenús */
@@ -64,7 +68,9 @@
     transition: opacity .25s ease .1s;
 }
   /* son visibes al poner el cursor encima */
-.menu li:hover > ul { opacity: 1; }
+.menu li:hover > ul { 
+                    opacity: 1; 
+                    }
 
    /* cada un ode los items de los submenús */
 .menu ul li {
