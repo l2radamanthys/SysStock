@@ -71,6 +71,7 @@ p {
 .content {
     width: 990px;
     margin: 10px auto; 
+    min-height: 700px;
     
 }
 

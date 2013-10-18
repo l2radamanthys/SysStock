@@ -16,11 +16,26 @@ class Session extends CI_Controller {
         echo "hola";
     }
     
+    
     function login() 
     {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        
         $data = array(
             'page_title' => 'Iniciar Session',
+            'result' => '',
+            'show_errors' => FALSE,
+            'custom_errors' => '',
         );
+        
+        
+        if ($this->form_validation->run() == FALSE)
+        {
+            
+        }
+        
+        
         
         $this->load->view('header', $data);
         $this->load->view('user_menu/not-login');

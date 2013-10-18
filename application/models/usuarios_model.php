@@ -36,11 +36,10 @@ class Usuarios_model extends CI_Model {
      * 
      * @return  
      */
-    public function user_validate($user, $pswrd)
-    {
-        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE username_usr='".$user."' AND password_usr='".$pswrd."';");
-        
-    }
+    #public function user_validate($user, $pswrd)
+    #{
+    #    $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE username_usr='".$user."' AND password_usr='".$pswrd."';");     
+    #}
     
     
     
