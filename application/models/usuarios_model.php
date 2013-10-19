@@ -70,4 +70,15 @@ class Usuarios_model extends CI_Model {
 	       return FALSE;
         }
     }
+    
+    
+    public function update_last_login($user)
+    {
+        $data = array(
+            'last_login_date_usr' => 'NOW()'
+        );
+        $condition = "username_user='".$user."' ";
+        return $this->db->update_string($this->table_name, $data, $condition);
+    }
+    
 }

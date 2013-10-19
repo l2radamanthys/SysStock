@@ -56,6 +56,15 @@ p {
     text-shadow: 0px 0px 2px #AFAFAF;
 }
 
+.header .login {
+    color: #EAEAEA;
+    text-align: right;
+    font-size: 10pt;
+    padding-top: 10px;
+
+    text-shadow: 0px 0px 1px #AFAFAF;
+}
+
 
 .nav {
     width: 990px;

@@ -9,6 +9,7 @@ class Auth {
         $this->ci =& get_instance();
         $this->ci->load->library('session');
         $this->ci->load->model('usuarios_model');
+        $this->ci->load->model('personas_model');
     }
     
     
@@ -26,9 +27,89 @@ class Auth {
         {
             if ($pswrd == $result['password_usr'])
             {
+                $pers = $this->ci->personas_model->get_person_by_user($user);
+                $nombre = $pers['nombre_pers']." ".$pers['apellido_pers']; #concatena el nombre y apellido               
                 $this->ci->session->set_userdata('login_user', $result['username_usr']);
-                #$this->ci->session->set_userdata('login_user', $result['username_usr']);
+                $this->ci->session->set_userdata('login_role', $result['tipo_usr']);
+                $this->ci->session->set_userdata('login_name', $nombre);   
+                
+                $this->ci->usuarios_model->update_last_login($user);             
             }
+            else 
+            {
+                return FALSE;
+            }
+       }
+       else 
+       {
+           return FALSE;
+       }
+    }    
+    
+    
+    /*
+     * Comprueba si hay una session iniciada. Retornara el nombre de usuario en
+     * caso que haya una session iniciada, o false en caso contrario.
+     * 
+     * @return string OR boolean False
+     */
+    public function user_is_logged() 
+    {
+        $usr = $this->ci->session->userdata('login_user');
+        if ($usr !== FALSE)
+        {
+            return $usr;
         }
-    }     
+        else 
+        {
+            return FALSE;
+        }
+    }
+    
+    
+    /*
+     * Retorna el nombre del Usuario que esta logueado Actualmente
+     */
+    public function user_get_name() 
+    {        
+        return $this->ci->session->userdata('login_name');
+    }
+ 
+    /*
+     * Retorna el tipo de Usuario
+     */ 
+    public function user_get_role()
+    {
+        return $this->ci->session->userdata('login_role');
+    }
+    
+ 
+    /*
+     * informacion para mostrar en la cabecera del sitio, de los datos
+     * del usuario que esta logueado actualmente
+     */ 
+    public function user_get_login_info()
+    {
+        if ($this->user_is_logged()) {
+            return $this->ci->session->userdata('login_name')." - ".$this->ci->session->userdata('login_role');
+        }
+        else 
+        {
+            return "Usuario No Logueado";    
+        }
+    }
+ 
+ 
+    /*
+     * Borra los datos de la session actual
+     */
+    public function user_logout() 
+    {
+        $this->ci->session->unset_userdata('login_user');
+        $this->ci->session->unset_userdata('login_role');
+        $this->ci->session->unset_userdata('login_name');
+        $this->ci->session->sess_destroy();    
+        $this->ci->session->sess_create(); 
+    } 
+     
 }

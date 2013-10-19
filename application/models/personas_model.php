@@ -20,16 +20,16 @@ class Personas_model extends CI_Model {
      * 
      * @return array OR Boolean  
      */
-    function get_persom($field, $value)
+    function get_person($field, $value)
     {
         $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$field."='".$value."';");
         return $query->row_array();
     }
     
     
-    function get_persom_by_user($user)
+    function get_person_by_user($user)
     {
-        return $this->get_persom('fk_username_usr',$user);
+        return $this->get_person('fk_username_usr',$user);
     }
     
 }
