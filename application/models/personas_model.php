@@ -32,4 +32,17 @@ class Personas_model extends CI_Model {
         return $this->get_person('fk_username_usr',$user);
     }
     
+    
+    // realiza cambios  en la entidad persona
+    function chance_person($fiel, $value,$condicion)
+    {
+        $campo ="";
+        foreach ($fiel as $i ) 
+        {
+            $campo = $fiel[$i]." = ".$value[$i].",";
+        }
+        $campo = substr($campo, 0,-1);        
+        $query = $this -> db -> query("UPDATE ".$this->table_name." SET ".$campo."WHERE ".$condicion.";" );
+        return $query;
+    }
 }
