@@ -74,5 +74,5 @@ INSERT INTO `stock_db`.`personas` (
 `fk_id_emp`
 )
 VALUES 
-    ('12345789', 'DNI', 'Juan', ' Perez', 'calle 123', 'user', '387-234-5678', '387-234-5678', 'user@usernet.com', '7', '1', '1', '1')
+    ('12345789', 'DNI', 'Juan', ' Perez', 'calle 123', 'user', '387-234-5678', '387-234-5678', 'user@usernet.com', '1, '1', '1', '1')
 ;
