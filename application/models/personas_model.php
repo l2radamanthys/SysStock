@@ -27,6 +27,7 @@ class Personas_model extends CI_Model {
     }
     
     
+    
     function get_person_by_user($user)
     {
         return $this->get_person('fk_username_usr',$user);
