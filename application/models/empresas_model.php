@@ -15,4 +15,11 @@ class Empresas_model extends CI_Model {
         $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE id_emp='".$value."';");
         return $query->row_array();
     }
+    
+    // inserta una empresa
+    function insert_empresa($fiel, $values)
+    {
+         $query = $this ->db->query("INSERT INTO ".$this->table_name."($fiel) VALUES($values);");
+         return $query;
+    }
 }
