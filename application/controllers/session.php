@@ -88,7 +88,8 @@ class Session extends CI_Controller {
     function logout() 
     {
         $this->auth->user_logout();
-        echo "has cerrado session con exito";        
+        redirect('/session/login');
+      
     } 
     
     

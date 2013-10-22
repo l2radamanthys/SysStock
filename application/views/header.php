@@ -25,7 +25,7 @@
         <!-- header -->
         <header class="header">
             
-            <p class="login"><?=$user;?></p>
+            <p class="login"><?echo (isset($user))? $user:"No Login";?></p>
             <p class="title">Systema de Stock</p>
             <br /> 
         </header>

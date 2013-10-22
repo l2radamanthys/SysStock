@@ -11,8 +11,36 @@ class Views extends CI_Controller {
     
     public function index() 
     {
-        $this->test_template();
+        #$this->home();
     }
+    
+    
+    /*
+     * sample basic view content copy paste and edit.
+     */ 
+    public function home() 
+    {
+        if ($this->auth->user_is_logged())
+        {
+            $data = array(
+                'page_title' => 'Home',
+                'user' => $this->auth->user_get_login_info(),
+            );
+            $nav = $this->auth->user_get_nav();
+            
+            #content here.
+            
+            $this->load->view('header', $data);
+            $this->load->view($nav, $data);
+            $this->load->view('home', $data);
+            $this->load->view('footer', $data);
+        }        
+        else {
+            #usuario no logueado
+            redirect('/session/login');
+        }
+    }
+    
     
     
     /*

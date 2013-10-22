@@ -100,6 +100,26 @@ class Auth {
     }
  
  
+    public function user_get_nav() {
+        if (!$this->user_is_logged()) 
+        {
+            return 'user_menu/not-login';
+        }
+        elseif ($this->user_get_role() == 'Vendedor')
+        {
+            return 'user_menu/vendedor';
+        }
+        elseif ($this->user_get_role() == '')
+        {
+            return 'nav';
+        }
+        elseif ($this->user_get_role() == '')
+        {
+            return 'nav';      
+        }
+    }
+ 
+ 
     /*
      * Borra los datos de la session actual
      */

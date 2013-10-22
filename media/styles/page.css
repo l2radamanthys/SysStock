@@ -108,6 +108,17 @@ p {
 }
 
 
+.one-section {
+    width: 965px;
+    float: left;
+    border: 1px solid #AAA;
+    background-color: #FFF;
+    padding: 20px 10px;
+    min-height: 600px;
+    border-radius:5px;
+}
+
+
 .footer-cont {
     background-color: #DDD;   
     margin-top: 10px;  

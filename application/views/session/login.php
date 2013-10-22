@@ -5,7 +5,7 @@
 </script>
 
 
-<content>
+<content class="one-section">
     
     <div class="window" style="width: 220px; margin: 20px auto;">
         <h3>Iniciar Session</h3> 
@@ -33,5 +33,3 @@
     </div>
     
 </content>
-
-    
