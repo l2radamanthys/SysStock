@@ -46,4 +46,7 @@ class Personas_model extends CI_Model {
         $query = $this -> db -> query("UPDATE ".$this->table_name." SET ".$campo."WHERE ".$condicion.";" );
         return $query;
     }
+    
+    
+    
 }
