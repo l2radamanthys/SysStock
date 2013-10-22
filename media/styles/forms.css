@@ -35,7 +35,7 @@ input[type="text"]:hover, input[type=password]:hover {
 }
 
 
-input[type="text"]:focus, input[type=password]: focus {
+input[type="text"]:focus, input[type=password]:focus {
     box-shadow:0 0 2px #FFFE00;
 }
 
@@ -51,7 +51,7 @@ input[type=submit] {
 label {
     font-family: Segoe-UI;
     font-size: 10pt;
-    padding-left: 5px;
+    padding: 5px;
     color:#2E2E2E;
     display: block;
 }
