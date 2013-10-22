@@ -6,6 +6,7 @@
     <title><?echo (isset($page_title))? $page_title: "Systema de Stock";?></title>
     
     <link rel="stylesheet" media="all"  href="<?=base_url();?>media/styles/reset.css" />
+    <link rel="stylesheet" media="all"  href="<?=base_url();?>media/styles/fonts.css" />
     <link rel="stylesheet" media="all"  href="<?=base_url();?>/media/styles/page.css" />
     <link rel="stylesheet" media="all"  href="<?=base_url();?>/media/styles/menu.css" />
     <link rel="stylesheet" media="all"  href="<?=base_url();?>/media/styles/forms.css" />

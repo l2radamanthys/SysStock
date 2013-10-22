@@ -12,11 +12,11 @@
         
         <div class="win-cont">
         <?=form_open('');?>     
-            <p><label>Usuario:</label><br />
+            <p><label>Usuario:</label>
             <input type="text" name="username" />    
             </p>
             
-            <p><label>Contraseña:</label><br />
+            <p><label>Contraseña:</label>
             <input type="password" name="password" />
             </p>
             

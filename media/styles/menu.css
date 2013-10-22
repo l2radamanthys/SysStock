@@ -5,9 +5,19 @@
     /* la altura y su ancho dependerán de los textos */
     height: 40px; 
     /* el color de fondo */
-    background: #EAEAEA;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+
+
+    
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
 
 /* cada item del menu */
@@ -24,7 +34,7 @@
 .menu li a {
     color: #3F3F3F;
     display: block;
-    font-family: Tahoma;
+    font-family: Segoe-UI, Tahoma;
     font-size: 10pt;
     font-weight: 100;
     line-height: 28px;
@@ -40,25 +50,27 @@
     transition: color .2s ease-in-out;
 }
   /* eliminamos los bordes del primer y el último */
-.menu li:first-child a { border-left: none; }
-.menu li:last-child a{ border-right: none; }
+    .menu li:first-child a { border-left: none; }
+    .menu li:last-child a{ border-right: none; }
   /* efecto hover cambia el color */
+  
 .menu li:hover > a {
-    background-color: rgb(230,245,255);//#0099ff;
-    //color: #0099ff ;
-    font-weight:bold;
-    border-radius:5px;
+    background-color: #FAFAFA;
+    //color: #0099ff;
+    //font-weight:bold;
 }
+
+
+
 
   /* los submenús */
 .menu ul {
-    border-radius: 0 0 5px 5px;
     left: 0;
     margin: 0;
     opacity: 0; /* no son visibles */
     position: absolute;
     top: 40px; /* se ubican debajo del enlace principal */
-    background: #005782; /* el color de fondo */
+    background-color: #FAFAFA; /* el color de fondo */
     
     /* animamos su visibildiad */
     -moz-transition: opacity .25s ease .1s;
@@ -69,14 +81,19 @@
 }
   /* son visibes al poner el cursor encima */
 .menu li:hover > ul { 
-                    opacity: 1; 
-                    }
+    opacity: 1;
+    border-left: 1px solid #AAA;
+    border-right: 1px solid #AAA;
+    border-bottom: 1px solid #AAA;
+    background: #EAEAEA;
+}
 
-   /* cada un ode los items de los submenús */
+/* cada un ode los items de los submenús */
 .menu ul li {
     height: 0; /* no son visibles */
     overflow: hidden;
     padding: 0;
+    
     /* animamos su visibildiad */
     -moz-transition: height .25s ease .1s;
     -webkit-transition: height .25s ease .1s;
@@ -88,6 +105,7 @@
     height: 36px; /* los mostramos */
     overflow: visible;
     padding: 0;
+    background-color: #FAFAFA;
 }
 
 
@@ -104,5 +122,5 @@
 
 /* el último n otiene un borde */
 .menu ul li:last-child a {
-    border: none;
+    border: 1 px solid #AAA;
 }
