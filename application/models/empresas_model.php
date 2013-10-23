@@ -10,6 +10,7 @@ class Empresas_model extends CI_Model {
     } 
     
     //carga las vistas
+    /*
     function index()
     {
         $this -> load ->library('form_validation');
@@ -24,9 +25,26 @@ class Empresas_model extends CI_Model {
         {
             $this ->load ->view('registro');
         }
-        
-        
     }
+    */
+    
+    
+    
+    /*
+     * Obtiene listado de todas las empresas ordenadas por nombre
+     * 
+     * Autor: Ricardo Quiroga
+     * 
+     * @return array
+     * 
+     */
+    public function all_by_name() 
+    {
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." ORDER BY razon_social_emp");
+        return $query->result_array();
+    }
+        
+    
     
     function get_empresa($id)
     {
