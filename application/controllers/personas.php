@@ -91,10 +91,36 @@ class Personas extends CI_Controller {
             redirect('/session/login');
         }
         
-        
-        
     }
-    
+
+
+    /*
+     * Mostrar datos Cliente
+     * 
+     * Autor: 
+     */
+    public function show($id)
+    {
+        if ($this->auth->user_is_logged() AND TRUE)
+        {
+            #codigo aca               
+               
+               
+        }    
+        elseif ($this->auth->user_is_logged())
+        {
+            #usuario logueado pero no tiene permisos    
+        }
+
+        else 
+        {
+            #usuario no logueado
+            redirect('/session/login');
+        }
+        
+    }        
+
+
     
     
 }
