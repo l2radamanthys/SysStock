@@ -39,7 +39,7 @@ class Empresas_model extends CI_Model {
     // inserta una empresa
     function insert_empresa($fiel, $values)
     {
-         $query = $this ->db->query("INSERT INTO ".$this->table_name."($fiel) VALUES($values);");
+         $query = $this->db->query("INSERT INTO ".$this->table_name."($fiel) VALUES($values);");
          return $query;
     }
     
