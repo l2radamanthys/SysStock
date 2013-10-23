@@ -35,7 +35,7 @@ class Personas_model extends CI_Model {
     
     
     // realiza cambios  en la entidad persona
-    function chance_person($fiel, $value,$condicion)
+    function modify_person($fiel, $value,$condicion)
     {
         $campo ="";
         foreach ($fiel as $i ) 
@@ -47,6 +47,17 @@ class Personas_model extends CI_Model {
         return $query;
     }
     
+<<<<<<< HEAD
     
     
+=======
+    // realiza la insercion de datos
+    function insert_person($fiel, $value)
+    {        
+        $query = $this -> db -> query("INSERT INTO ".$this->table_name."($fiel) VALUES ($value);");   
+        return $query;
+    }
+>>>>>>> 5485dfbf9e430ddafeb689fdfd63f98a5d9b455f
 }
+
+
