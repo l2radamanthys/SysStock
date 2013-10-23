@@ -56,17 +56,18 @@
         <p>Cargando espere un momento...</p>
     </div>
     
-    <div class="window" style="width: 500px; margin: 0 auto;">
+    <div class="window" style="width: 900px; margin: 0 auto;">
         <div class="win-cont">
-        <?=form_open('');?>    
+        <?=form_open('/personas/create/'.$type_pers);?>  
+            <div style="float: left; width: 450px;">  
             <p>
             <label>Nombre:</label>
-            <input type="text" name="nombre_pers" id="nombre_pers" size="45" maxlength="45"/>            
+            <input type="text" name="nombre_pers" id="nombre_pers" size="45" value="<?=set_value('nombre_pers')?>" maxlength="45"/>            
             </p>
             
             <p>
             <label>Apellido:</label>
-            <input type="text" name="apellido_pers" id="apellido_pers" size="45" maxlength="45"/>            
+            <input type="text" name="apellido_pers" id="apellido_pers" value="<?=set_value('apellido_pers')?>" size="45" maxlength="45"/>            
             </p>
     
             <p style="float: left;">
@@ -82,41 +83,42 @@
             </select>            
             </p>
 
-            
-
             <p style="margin-left: 200px;">
             <label>Numero Documento:</label>
-            <input type="text" name="nro_dni_pers" id="nro_dni_pers" size="11" maxlength="11" />            
+            <input type="text" name="nro_dni_pers" id="nro_dni_pers" value="<?=set_value('nro_dni_pers')?>" size="11" maxlength="11" />            
             </p>                
 
-            
             <div style="clear: both;"></div>
             <p>
             <label>Empresa:</label>
             <select name="fk_id_emp" id="fk_id_emp" size="1">   
-                
+                <? foreach ($empresas as $row): ?>
+                <option value="<?=$row['id_emp'];?>"><?=$row['razon_social_emp'];?></option>                    
+                <? endforeach; ?>
             </select>             
             </p>
-    
-    
+ 
             <p style="float: left;">
             <label>Telefono:</label>
-            <input type="text" name="telefono_usr" id="telefono_usr" size="15" maxlength="45"/>            
+            <input type="text" name="telefono_usr" id="telefono_usr" value="<?=set_value('telefono_pers')?>" size="15" maxlength="45"/>            
             </p>
             
             <p style="margin-left: 200px;">
             <label>Celular:</label>
-            <input type="text" name="celular_usr" id="celular_usr" size="15" maxlength="45"/>            
+            <input type="text" name="celular_usr" id="celular_usr" value="<?=set_value('celular_pers')?>" size="15" maxlength="45"/>            
             </p>
             <div style="clear: both;"></div>
             <p>
             <label>Email:</label>
-            <input type="text" name="email_usr" id="email_usr" size="45" maxlength="45"/>            
+            <input type="text" name="email_usr" id="email_usr" value="<?=set_value('email_pers')?>" size="45" maxlength="45"/>            
             </p>
             
+            </div > 
+            
+            <div>           
             <p>
             <label>Direccion:</label>
-            <input type="text" name="direccion_pers" id="direccion_pers" size="50" maxlength="60"/>            
+            <input type="text" name="direccion_pers" id="direccion_pers" value="<?=set_value('direccion_pers')?>" size="50" maxlength="60"/>            
             </p>
                 
             
@@ -143,16 +145,37 @@
             </select>       
             </p>
             
+            <p>
+            <label>Observaciones:</label>
+            <textarea name="observaciones_pers" cols="35">                
+            </textarea>
+            </p>
+            
+            </div>
+            
+            <div style="clear:both"></div>    
+                        
+            <p>
+                <?=form_hidden('is_cliente', $is_cliente)?>
+                <?=form_hidden('is_proveedor', $is_proveedor)?>
+            </p>
+ 
             <br />
             <p style="text-align: center">
                 <input type="Submit" value="Registrar" />
                 <input type="Reset" value="Limpiar" />
             </p>
-            
+
         </form>
         </div>
     </div>
- 
     
     
+    <? if ($show_errors): ?>
+    <br />    
+    <div style="width: 500px; margin: 0 auto;">
+        <?=validation_errors('<div class="notify-error">','</div>');?>
+        <?echo ($custom_error != '')? '<div class="notify-error">'.$custom_error.'</div>': "<!-- no errors -->";?>
+    </div>
+    <? endif; ?>
 </section>

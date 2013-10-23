@@ -11,17 +11,19 @@ class Personas extends CI_Controller {
      * @param string tipo ("cliente", "proveedor")
      * 
      */
-    public function create($type='cliente')
+    public function create($type='')
     {
         if ($this->auth->user_is_logged() AND TRUE)
         {
             $this->load->helper('form');
             $this->load->library('form_validation');
             $this->load->model('provincias_model');
+            $this->load->model('empresas_model');
             
             
             $data = array(
                 'page_title' => 'Home',
+                'type_pers' => $type,
                 'user' => $this->auth->user_get_login_info(),
             );
             $nav = $this->auth->user_get_nav();
@@ -31,11 +33,13 @@ class Personas extends CI_Controller {
             if ($type == 'cliente') 
             {
                 $data['title'] = "Registrar Cliente"; 
-                $data['is_cliente'] = TRUE;               
+                $data['is_cliente'] = TRUE; 
+                $data['is_proveedor'] = FALSE;                
             }
             elseif ($type == 'proveedor') 
             {
                 $data['title'] = "Registrar Proveedor";
+                $data['is_cliente'] = FALSE; 
                 $data['is_proveedor'] = TRUE;                
             }
             else 
@@ -46,22 +50,27 @@ class Personas extends CI_Controller {
             }                
             
             
-            $data['show_form'] = TRUE;
-            $data['custom_error']='';            
-            
+            $data['show_errors'] = FALSE; #mostrar error
+            $data['custom_error']='';     #error personalizado si lo hay      
             $data['provincias'] = $this->provincias_model->all();
-            #$data['empresas'] = $this->empresas_model->all();
+            $data['empresas'] = $this->empresas_model->all_by_name();
             
             
-            if ($this->form_validation->run() !== FALSE) 
+            if ($this->form_validation->run('persona') != FALSE) 
             {
                 #pass
                 echo "run";
+                
+                
+                $this->load->view('header', $data);
+                $this->load->view($nav, $data);
+                $this->load->view('personas/registrar_success', $data);
+                $this->load->view('footer', $data);
+                
 
             }
             else {
-                
-
+                $data['show_errors'] = TRUE;
 
                 $this->load->view('header', $data);
                 $this->load->view($nav, $data);

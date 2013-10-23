@@ -69,7 +69,7 @@ CREATE  TABLE IF NOT EXISTS `Zonas` (
   `fk_id_prov` INT NOT NULL ,
   `nombre_zona` VARCHAR(35) NULL ,
   `barrios_zona` TEXT NULL ,
-  `observaciones_zona` TEXT NULL ,
+  `observaciones_zona` TEXT NULL,
   PRIMARY KEY (`id_zona`, `fk_id_ciud`, `fk_id_prov`) ,
   INDEX `fk_Ciudades_Zonas1_idx` (`fk_id_ciud` ASC, `fk_id_prov` ASC) ,
   CONSTRAINT `fk_Ciudades_Zonas1`
@@ -134,15 +134,17 @@ COLLATE = utf8_spanish2_ci;
 -- Table `db`.`Personas`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `Personas` (
-  `nro_dni_pers` INT NOT NULL ,
+  `id_pers` INT NOT NULL AUTO_INCREMENT ,
+  `nro_dni_pers` INT NOT NULL DEFAULT 0,
   `tipo_dni_pers` ENUM('','DNI', 'Visa', 'Libreta Civica', 'Libreta Enrrolamiento', 'Pasaporte', 'Otros') NOT NULL ,
   `nombre_pers` VARCHAR(45) NULL DEFAULT '',
   `apellido_pers` VARCHAR(45) NULL DEFAULT '',
-  `direccion_pers` VARCHAR(60) NULL DEFAULT '',
+  `direccion_pers` VARCHAR(60) NULL DEFAULT '',  
   `fk_username_usr` VARCHAR(16) NULL DEFAULT '' ,
-  `telefono_usr` VARCHAR(45) NULL DEFAULT '',
-  `celular_usr` VARCHAR(45) NULL DEFAULT '',
-  `email_usr` VARCHAR(45) NULL DEFAULT '',
+  `telefono_pers` VARCHAR(45) NULL DEFAULT '',
+  `celular_pers` VARCHAR(45) NULL DEFAULT '',
+  `email_pers` VARCHAR(45) NULL DEFAULT '',
+  `observaciones_pers` TEXT NULL,
   `fk_id_zona` INT ,
   `fk_id_ciud` INT ,
   `fk_id_prov` INT ,
