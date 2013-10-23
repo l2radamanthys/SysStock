@@ -1,4 +1,9 @@
-﻿<content class="one-section">
+﻿<script type="text/javascript">
+    $(function() {
+        $('input[type=submit]').button()   
+    });  
+</script>
+<content class="one-section">
     <div class="window" style="width: 300px; margin: 20px auto;">
     <h3> Registro de Empresas </h3>
     <div class="win-cont">
@@ -19,7 +24,7 @@
             </p>
      
      </form>
-     <p>Algunos de estos campos son obligatorios</p>
+     <p class="mini">Algunos de estos campos son obligatorios</p>
         </div>
     </div>
     

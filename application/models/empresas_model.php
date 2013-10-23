@@ -8,25 +8,7 @@ class Empresas_model extends CI_Model {
         $this->load->database(); 
         $this->table_name = 'Empresas'; 
     } 
-    
-    //carga las vistas
-    /*
-    function index()
-    {
-        $this -> load ->library('form_validation');
-        $this ->load ->view("empresa/registro");
-        $this->form_validation->set_rules('razon_social','Razon Social','required');
-        $this->form_validation->set_rules('cuit','CUIT','required');
-        if ($this -> form_validation ->run() == TRUE) 
-        {
-            $this ->load ->view('registro_success') ;   
-        } 
-        else 
-        {
-            $this ->load ->view('registro');
-        }
-    }
-    */
+     
     
     
     
@@ -67,5 +49,9 @@ class Empresas_model extends CI_Model {
                 
     }
     
-    // baja de la empresa, seria un cambio de estado
+    // 
+    function estatus()
+    {
+                
+    }
 }
