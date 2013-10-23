@@ -43,21 +43,19 @@ class Personas_model extends CI_Model {
             $campo = $fiel[$i]." = ".$value[$i].",";
         }
         $campo = substr($campo, 0,-1);        
-        $query = $this -> db -> query("UPDATE ".$this->table_name." SET ".$campo."WHERE ".$condicion.";" );
+        $query = $this->db->query("UPDATE ".$this->table_name." SET ".$campo."WHERE ".$condicion.";" );
         return $query;
     }
     
-<<<<<<< HEAD
+
     
-    
-=======
     // realiza la insercion de datos
     function insert_person($fiel, $value)
     {        
-        $query = $this -> db -> query("INSERT INTO ".$this->table_name."($fiel) VALUES ($value);");   
+        $query = $this->db->query("INSERT INTO ".$this->table_name."($fiel) VALUES ($value);");   
         return $query;
     }
->>>>>>> 5485dfbf9e430ddafeb689fdfd63f98a5d9b455f
+
 }
 
 

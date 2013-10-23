@@ -30,7 +30,9 @@ INSERT INTO `ciudades` (
 )
 VALUES 
     (NULL , 'Salta Capital', '1'),
-    (NULL , 'Metan', '1')
+    (NULL , 'Metan', '1'),
+    (NULL , 'San Salvador de Jujuy', '2'), 
+    (NULL , 'Tucuman', '3')
 ;
 
 
@@ -44,7 +46,9 @@ INSERT INTO `zonas` (
 )
 VALUES 
     (NULL , '1', '1', 'Centro', 'Macro Centro y Micro Centro', NULL),
-    (NULL , '2', '1', 'Ciudad', 'Sin Zonas', NULL)
+    (NULL , '2', '1', 'Ciudad', 'Sin Zonas', NULL),
+    (NULL , '5', '2', 'Ciudad', 'Sin Zonas', NULL),
+    (NULL , '6', '3', 'Ciudad', 'Sin Zonas', NULL)
 ;
 
 INSERT INTO `usuarios` (
@@ -55,7 +59,7 @@ INSERT INTO `usuarios` (
 `last_login_date_usr`
 )
 VALUES 
-    ('user', 'user', 'Vendedor', CURRENT_TIMESTAMP , NULL)    
+    ('user', 'user', 'Vendedor', CURRENT_TIMESTAMP , NULL)
 ;
 
 INSERT INTO `stock_db`.`personas` (

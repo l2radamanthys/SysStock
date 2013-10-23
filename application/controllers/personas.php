@@ -2,21 +2,30 @@
 
 
 class Personas extends CI_Controller {
-    
+      
+    /*
+     * Vista Para creacion de una persona ya sea cliente o proveedor
+     * 
+     * Autor: Ricardo D. Quiroga
+     * 
+     * @param string tipo ("cliente", "proveedor")
+     * 
+     */
     public function create($type='cliente')
     {
         if ($this->auth->user_is_logged() AND TRUE)
         {
             $this->load->helper('form');
             $this->load->library('form_validation');
-            
             $this->load->model('provincias_model');
+            
             
             $data = array(
                 'page_title' => 'Home',
                 'user' => $this->auth->user_get_login_info(),
             );
             $nav = $this->auth->user_get_nav();
+                      
                             
             #adapto la vista segun el tipo de Persona a Registrar                                   
             if ($type == 'cliente') 
@@ -36,23 +45,24 @@ class Personas extends CI_Controller {
                 $data['is_proveedor'] = TRUE;
             }                
             
+            
             $data['show_form'] = TRUE;
-            $data['form'] = "";
             $data['custom_error']='';            
+            
+            $data['provincias'] = $this->provincias_model->all();
+            #$data['empresas'] = $this->empresas_model->all();
             
             
             if ($this->form_validation->run() !== FALSE) 
             {
                 #pass
                 echo "run";
-                
-                
+
             }
             else {
                 
-                $data['provincias'] = $this->provincias_model->all();
-                
-                
+
+
                 $this->load->view('header', $data);
                 $this->load->view($nav, $data);
                 $this->load->view('personas/registrar', $data);

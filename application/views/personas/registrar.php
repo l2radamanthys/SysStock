@@ -1,4 +1,4 @@
-<script type="text/javascript">  
+<script type="text/javascript">    
     //metodo ajax que actualiza el campo ciudades cuando se actualuaza prov
     function updCitiesForProv() {
         var value = $("#fk_id_prov option:selected").val();
@@ -39,14 +39,13 @@
         });    
     }
     
-    
-   
-    //updCitiesForProv();
-    //updZonesForCity(); 
-    
-    
-
-    
+    //ejecutar al inicio
+    $(function() {
+        $('input[type=submit]').button();
+        $('input[type=reset]').button();
+        updCitiesForProv();
+        updZonesForCity();    
+    });  
 </script>
 
 
@@ -121,27 +120,33 @@
             </p>
                 
             
-            <p style="float: left;">
+            <p>
             <label>Provincia:</label>
-            <select name="fk_id_prov" id="fk_id_prov" size="1" onchange="updCitiesForProv(); return false;">   
+            <select name="fk_id_prov" id="fk_id_prov" size="1" onchange="updCitiesForProv(); return false;" style="min-width: 250px;">   
             <? foreach ($provincias as $row): ?>
                 <option value="<?=$row['id_prov'];?>"><?=$row['nombre_prov']?></option>
             <? endforeach; ?>
             </select>             
             </p>
             
-            <p style="float: left; margin-left: 50px;">
+            <p>
             <label>Ciudad:</label>
-            <select name="fk_id_ciud" id="fk_id_ciud" size="1" onchange="updZonesForCity(); return false;">   
+            <select name="fk_id_ciud" id="fk_id_ciud" size="1" onchange="updZonesForCity(); return false;" style="min-width: 250px;">   
                 <option>Sin Definir</option>
             </select>            
             </p>            
 
-            <p style="margin-left: 300px;">
+            <p>
             <label>Zona:</label>
-            <select name="fk_id_zona" id="fk_id_zona" size="1">   
+            <select name="fk_id_zona" id="fk_id_zona" size="1" style="min-width: 250px;">   
                 <option>Sin Definir</option>
             </select>       
+            </p>
+            
+            <br />
+            <p style="text-align: center">
+                <input type="Submit" value="Registrar" />
+                <input type="Reset" value="Limpiar" />
             </p>
             
         </form>
