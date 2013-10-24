@@ -90,6 +90,7 @@ CREATE  TABLE IF NOT EXISTS `Sucursal` (
   `fk_id_emp` INT NOT NULL ,
   `nombre_suc` VARCHAR(45) NULL ,
   `direccion_suc` VARCHAR(60) NULL ,
+  `horario`  VARCHAR(45) NULL ,
   `email_suc` VARCHAR(45) NULL ,
   `telefono_a_suc` VARCHAR(20) NULL ,
   `telefono_b_suc` VARCHAR(20) NULL ,
