@@ -141,8 +141,8 @@ CREATE  TABLE IF NOT EXISTS `Personas` (
   `fk_id_ciud` INT NULL ,
   `fk_id_prov` INT NULL ,
   `fk_id_emp` INT NULL ,
-  `es_cliente` TINYINT(1) NULL DEFAULT FALSE ,
-  `es_proveedor` TINYINT(1) NULL DEFAULT FALSE ,
+  `es_cliente_pers` TINYINT(1) NULL DEFAULT FALSE ,
+  `es_proveedor_pers` TINYINT(1) NULL DEFAULT FALSE ,
   PRIMARY KEY (`id_pers`) ,
   INDEX `fk_Usuarios_Personas1_idx` (`fk_username_usr` ASC) ,
   INDEX `fk_Zonas_Personas1_idx` (`fk_id_zona` ASC, `fk_id_ciud` ASC, `fk_id_prov` ASC) ,
@@ -165,3 +165,6 @@ CREATE  TABLE IF NOT EXISTS `Personas` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_spanish2_ci;
+
+
+

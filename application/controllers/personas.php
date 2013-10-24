@@ -7,7 +7,7 @@ class Personas extends CI_Controller {
      * Vista Para creacion de una persona ya sea cliente o proveedor
      * 
      * Autor: Ricardo Quiroga
-     * 
+     * Estado: Completo
      * @param string tipo ("cliente", "proveedor")
      * 
      */
@@ -126,9 +126,11 @@ class Personas extends CI_Controller {
 
     /*
      * Buscar Un CLiente
-     *  
+     * 
+     * Autor: Ricardo Quiroga
+     * Estado: Incompleto 
      */     
-    public function buscar_cliente($query="")
+    public function search_client($query="")
     {
         if ($this->auth->user_is_logged() AND TRUE)
         {
@@ -166,13 +168,62 @@ class Personas extends CI_Controller {
         }      
     } 
 
+    
+    public function search($type, $param="")
+    {
+        if ($type == "cliente")
+        {
+            $this->search_client($param);
+        }
+    }
+
 
     /*
      * Mostrar datos Cliente
      * 
      * Autor: Ricardo Quiroga
+     * Estado: Incompleto
      */
     public function show($id)
+    {
+        if ($this->auth->user_is_logged() AND TRUE)
+        {
+            $data = array(
+                'page_title' => 'Datos Persona',
+                'user' => $this->auth->user_get_login_info(),
+            );
+            $nav = $this->auth->user_get_nav(); 
+            
+            $pers = 
+            
+            
+            
+            $this->load->view('header', $data);
+            $this->load->view($nav, $data);
+            $this->load->view('personas/mostrar', $data);
+            $this->load->view('footer');             
+               
+               
+        }    
+        elseif ($this->auth->user_is_logged())
+        {
+            #usuario logueado pero no tiene permisos    
+        }
+
+        else 
+        {
+            #usuario no logueado
+            redirect('/session/login');
+        }
+    }        
+
+
+    /*
+     * Modificar Datos Persona
+     * 
+     * Autor: Ricardo Quiroga
+     */
+    public function edit($id)
     {
         if ($this->auth->user_is_logged() AND TRUE)
         {
@@ -190,10 +241,7 @@ class Personas extends CI_Controller {
             #usuario no logueado
             redirect('/session/login');
         }
-        
-    }        
-
-
+    }  
     
     
 }
