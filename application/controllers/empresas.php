@@ -22,7 +22,14 @@
         $this->form_validation->set_rules('cuit','CUIT','required');
         if ($this -> form_validation ->run() == TRUE) 
         {
-            $this ->load ->view('empresa/registro_success') ;   
+            insert_empresa($fiel, $values);
+            //$this ->load ->view('empresa/registro_success') ; 
+            $this->form_validation->set_rules('razon_social','Razon Social','required');
+            $this->form_validation->set_rules('razon_social','Razon Social','required');
+            $this->form_validation->set_rules('razon_social','Razon Social','required');
+            $this->form_validation->set_rules('razon_social','Razon Social','required');
+            $this->form_validation->set_rules('razon_social','Razon Social','required');
+            $this ->load ->view('empresa/sucursal') ;    
         } 
         else 
         {

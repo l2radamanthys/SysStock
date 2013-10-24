@@ -1,32 +1,41 @@
 ﻿<content class="one-section">
     
-    <div class="window" style="width: 220px; margin: 20px auto;">
+    <div class="window" style="width: 400px; margin: 20px auto;">
         <h3>Registro Sucursal  </h3> 
         
         <div class="win-cont">
         <? echo validation_errors(); ?>
         <?=form_open('');?>     
-            <p><label>Empresa</label>
-            <input type="text" name="empresa"  value="Una Empresa"/>    
+            <p>Empresa
+            <input type="text" name="empresa"  value="<? echo set_value('razon_social'); ?>"/>   
+            <in 
             </p>
             
-            <p><label>Direccion:</label>
-            <input type="text" name="direccion" />
+            <p>Nombre Suc:
+            <input type="text" name="sucursal" value="<? echo set_value('sucursal'); ?>"/>
             </p>
             
-            <p><label>Telefono1 :</label>
-                <input type="text" name="telefono1" />
+            <p>Direccion:
+            <input type="text" name="direccion" value="<? echo set_value('direccion'); ?>"/>
             </p>
             
-            <p><label>Telefono2 :</label>
-                <input type="text" name="telefono2" />
+            <p>Horario  :
+                <input type="text" name="horario" value="<? echo set_value('horario'); ?>"/>
             </p>
             
-            <p><label>Direccion:</label>
-                <input type="text" name="direccion" />
+            <p>Telefono1 :
+                <input type="text" name="telefono1" value="<? echo set_value('telefono1'); ?>"/>
             </p>
-            <p><label>Sitio Web:</label>
-                <input type="text" name="sitio" />
+            
+            <p>Telefono2 :
+                <input type="text" name="telefono2" value="<? echo set_value('telefono2'); ?>"/>
+            </p>
+            
+            <p>Direccion:
+                <input type="text" name="direccion" value="<? echo set_value('direccion'); ?>"/>
+            </p>
+            <p>Sitio Web:
+                <input type="text" name="sitio" value="<? echo set_value('sitio'); ?>"/>
             </p>
             <p style="text-align: center">
                 <input type="Submit" value="registrar" />
