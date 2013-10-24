@@ -30,7 +30,7 @@ class Empresas_model extends CI_Model {
     
     function get_empresa($id)
     {
-        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE id_emp='".$value."';");
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE id_emp='".$id."';");
         return $query->row_array();
     }
     
@@ -41,6 +41,13 @@ class Empresas_model extends CI_Model {
     {
          $query = $this->db->query("INSERT INTO ".$this->table_name."($fiel) VALUES($values);");
          return $query;
+    }
+    
+    // realiza la consulta de una empresa
+    function consult_empresa($condition)
+    {
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$condition.";");
+        return $query->row_array();
     }
     
     // modifica los datos

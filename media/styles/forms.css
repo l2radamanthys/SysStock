@@ -84,9 +84,24 @@ label {
     //border-bottom-right-radius: 8px;
     //border-bottom-left-radius: 8px;
 }
+/*************************************
+ *Funciones  Auxiliares
+ * ******************************* */
 
 .mini {
     font-size:10px;
     padding-left:10px;
     padding-right:10px;
+}
+
+.der{
+    width:49%;
+    float:right;
+    position:relative;
+}
+
+.izq{
+    width:49%;
+    float:left;
+    position:relative;
 }
