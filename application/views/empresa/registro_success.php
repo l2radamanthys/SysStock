@@ -1,11 +1,11 @@
 ﻿<content class="one-section">
     
     <div class="window" style="width: 220px; margin: 20px auto;">
-        <h3>Iniciar Session</h3> 
+        <h3>Registro de Empresas</h3> 
         
         <div class="win-cont">
         
-            <h3>Formulario Registro de Empresas</h3>
+            
             <p>Se cargo correctamente</p>
         
         </div>
