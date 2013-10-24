@@ -100,17 +100,17 @@
  
             <p style="float: left;">
             <label>Telefono:</label>
-            <input type="text" name="telefono_usr" id="telefono_usr" value="<?=set_value('telefono_pers')?>" size="15" maxlength="45"/>            
+            <input type="text" name="telefono_pers" id="telefono_usr" value="<?=set_value('telefono_pers')?>" size="15" maxlength="45"/>            
             </p>
             
             <p style="margin-left: 200px;">
             <label>Celular:</label>
-            <input type="text" name="celular_usr" id="celular_usr" value="<?=set_value('celular_pers')?>" size="15" maxlength="45"/>            
+            <input type="text" name="celular_pers" id="celular_usr" value="<?=set_value('celular_pers')?>" size="15" maxlength="45"/>            
             </p>
             <div style="clear: both;"></div>
             <p>
             <label>Email:</label>
-            <input type="text" name="email_usr" id="email_usr" value="<?=set_value('email_pers')?>" size="45" maxlength="45"/>            
+            <input type="text" name="email_pers" id="email_usr" value="<?=set_value('email_pers')?>" size="45" maxlength="45"/>            
             </p>
             
             </div > 

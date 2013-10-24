@@ -22,5 +22,21 @@ class Provincias_model extends CI_Model {
     }
     
     
+    /*
+     * Devuelve el nombre de la provincia pasando el ID
+     */
+    public function get_name($id)
+    {
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE id_prov=".$id);
+        $q = $query->row_array();
+        if(isset($q['nombre_prov'])) 
+        {
+            return $q['nombre_prov'];
+        }
+        else 
+        {
+            return "-------------";
+        }                
+    }
     
 }

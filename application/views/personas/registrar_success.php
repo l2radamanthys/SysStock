@@ -17,7 +17,7 @@
         
         <br />
         <p style="text-align:center">
-            <a href="" id="botton">Continuar</a>            
+            <a href="<?=base_url()?>/personas/search/cliente" id="botton">Continuar</a>            
         </p>
     
     </div>

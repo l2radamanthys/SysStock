@@ -58,8 +58,6 @@ class Personas extends CI_Controller {
             
             if ($this->form_validation->run('persona') != FALSE) 
             {
-                #pass
-                echo "run";
                 $form_data = array(
                     'nombre_pers' => $this->input->post('nombre_pers'),
                     'apellido_pers' => $this->input->post('apellido_pers'),
@@ -72,7 +70,8 @@ class Personas extends CI_Controller {
                     'email_pers' => $this->input->post('email_pers'),
                     'observaciones_pers' => $this->input->post('observaciones_pers'),
                     'direccion_pers' => $this->input->post('direccion'),
-                    'es_cliente' => $data['is_cliente'],
+                    'es_cliente_pers' => $data['is_cliente'],
+                    'es_proveedor_pers' => $data['is_proveedor'],
                     #lo mismo que con empresas, si no seleciona se pone a null
                     'fk_id_prov' => blanc_to_null($this->input->post('fk_id_prov')),
                     'fk_id_ciud' => blanc_to_null($this->input->post('fk_id_ciud')),
@@ -146,7 +145,7 @@ class Personas extends CI_Controller {
             
             $data['css_include'] = css_include('tables.css');               
             
-            $data['personas'] = $this->personas_model->all();
+            $data['personas'] = $this->personas_model->all_clients();
             
             
             
@@ -188,15 +187,26 @@ class Personas extends CI_Controller {
     {
         if ($this->auth->user_is_logged() AND TRUE)
         {
+            $this->load->model('personas_model');
+            $this->load->model('provincias_model');
+            $this->load->model('ciudades_model');
+            $this->load->model('zonas_model');
+            $this->load->helper('utils');
+            
             $data = array(
                 'page_title' => 'Datos Persona',
                 'user' => $this->auth->user_get_login_info(),
             );
             $nav = $this->auth->user_get_nav(); 
             
-            $pers = 
+            $data['css_include'] = css_include('tables.css'); 
             
             
+            $pers = $this->personas_model->get_person_by_id($id);
+            $data['pers'] = $pers;
+            $data['pers']['prov'] = $this->provincias_model->get_name($pers['fk_id_prov']);
+            $data['pers']['ciud'] = $this->ciudades_model->get_name($pers['fk_id_ciud']);
+            $data['pers']['zona'] = $this->zonas_model->get_name($pers['fk_id_zona']);
             
             $this->load->view('header', $data);
             $this->load->view($nav, $data);
