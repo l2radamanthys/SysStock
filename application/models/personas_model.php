@@ -20,15 +20,17 @@ class Personas_model extends CI_Model {
      * 
      * @return array OR Boolean  
      */
-    function get_person($field, $value)
+    public function get_person($field, $value)
     {
         $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$field."='".$value."';");
         return $query->row_array();
     }
     
     
-    
-    function get_person_by_user($user)
+    /*
+     * 
+     */
+    public function get_person_by_user($user)
     {
         return $this->get_person('fk_username_usr',$user);
     }
@@ -47,6 +49,12 @@ class Personas_model extends CI_Model {
         return $query;
     }
     
+
+    public function register_person($data) 
+    {
+        
+    }
+
 
     
     // realiza la insercion de datos
