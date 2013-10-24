@@ -64,29 +64,46 @@
             <td><span class="label">Observaciones:</span></td>
             <td><?=$pers['observaciones_pers']?></td>
         </tr>
-          
+        
+        <tr>
+            <td><span class="label">Es Cliente:</span></td>
+            <td><?=$pers['es_cliente_pers']?></td>
+        </tr>
+        
+        <tr>
+            <td><span class="label">Es Proveedor:</span></td>
+            <td><?=$pers['es_proveedor_pers']?></td>
+        </tr>
+         
     </table>
     </div>
     </div>
     
     <br />
     <br />
-    <a href="<?=base_url()?>personas/search/cliente/" style="font-size: 10pt;">Volver Atras</a>
+    <a href="<?=base_url()?>personas/search/cliente/">Volver Atras</a>
     
 </section>
 
 <aside class="aside">
     
     <ul class="submenu">
-        <li><h3>Cliente</h3></li>
-        <li><a href="">Modficar Datos</a></li>        
+        <li><h3>Persona</h3></li>
+        <li><a href="">Modficar Datos</a></li>
+        <li><a href="">Habilitar como Cliente</a></li> 
+        <li><a href="">Habilitar como Proveedor</a></li>
+        <li><h3>Articulos por Proveedor</h3></li>
+        <li><a href="">Listado Articulo Proveedor</a></li>
+        <li><a href="">Nuevo Articulo Proveedor</a></li>   
         <li><h3>Presupuestos</h3></li>
         <li><a href="">Nuevo Presupuesto</a></li>
         <li><a href="">Presupuestos Solicitados</a></li>
         <li><h3>Pedidos</h3></li>
-        <li><a href="">Nuevo Pedido</a></li>
+        <li><a href="">Nuevo Pedido Compra</a></li>
+        <li><a href="">Nuevo Pedido Venta</a></li>
         <li><a href="">Pedidos Pendientes</a></li>
         <li><h3>Remitos</h3></li>
-        <li><a href="">Nuevo Remito</a></li>
+        <li><a href="">Nuevo Remito Compra</a></li>
+        <li><a href="">Nuevo Remito Venta</a></li>
     </ul>
 </aside>

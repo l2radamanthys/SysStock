@@ -23,3 +23,15 @@ function css_include($style)
     return '<link rel="stylesheet" media="all"  href="'.base_url().'/media/styles/'.$style.'" />';
 }
 
+
+function bool_to_str($val)
+{
+    if ($val == TRUE)
+    {
+        return "Si";
+    }    
+    else 
+    {
+        return "No";
+    }
+}

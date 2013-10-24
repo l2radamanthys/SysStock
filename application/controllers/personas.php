@@ -34,19 +34,22 @@ class Personas extends CI_Controller {
             {
                 $data['title'] = "Registrar Cliente"; 
                 $data['is_cliente'] = TRUE; 
-                $data['is_proveedor'] = FALSE;                
+                $data['is_proveedor'] = FALSE;   
+                $data['success'] = "registrar_cliente_success";             
             }
             elseif ($type == 'proveedor') 
             {
                 $data['title'] = "Registrar Proveedor";
                 $data['is_cliente'] = FALSE; 
-                $data['is_proveedor'] = TRUE;                
+                $data['is_proveedor'] = TRUE;
+                $data['success'] = "registrar_proveedor_success";                
             }
             else 
             {
                 $data['title'] = "Registrar Persona";
                 $data['is_cliente'] = TRUE;
                 $data['is_proveedor'] = TRUE;
+                $data['success'] = "registrar_proveedor_success";
             }                
             
             
@@ -84,7 +87,7 @@ class Personas extends CI_Controller {
                 {
                     $this->load->view('header', $data);
                     $this->load->view($nav, $data);
-                    $this->load->view('personas/registrar_success', $data);
+                    $this->load->view('personas/'.$data['success'], $data);
                     $this->load->view('footer', $data);
                 }
 
@@ -124,7 +127,7 @@ class Personas extends CI_Controller {
 
 
     /*
-     * Buscar Un CLiente
+     * Buscar un Proveedor
      * 
      * Autor: Ricardo Quiroga
      * Estado: Incompleto 
@@ -138,20 +141,16 @@ class Personas extends CI_Controller {
               
             $data = array(
                 'page_title' => 'Buscar Cliente',
-                #'type_pers' => $type,
                 'user' => $this->auth->user_get_login_info(),
             );
             $nav = $this->auth->user_get_nav();  
-            
             $data['css_include'] = css_include('tables.css');               
             
             $data['personas'] = $this->personas_model->all_clients();
-            
-            
-            
+
             $this->load->view('header', $data);
             $this->load->view($nav, $data);
-            $this->load->view('personas/buscar', $data);
+            $this->load->view('personas/buscar_cliente', $data);
             $this->load->view('footer');               
                
         }    
@@ -168,11 +167,65 @@ class Personas extends CI_Controller {
     } 
 
     
+    /*
+     * Buscar Un CLiente
+     * 
+     * Autor: Ricardo Quiroga
+     * Estado: Incompleto 
+     */     
+    public function search_proveedor($query="")
+    {
+        if ($this->auth->user_is_logged() AND TRUE)
+        {
+            $this->load->model('personas_model');
+            $this->load->helper('utils');  
+              
+            $data = array(
+                'page_title' => 'Buscar Cliente',
+                'user' => $this->auth->user_get_login_info(),
+            );
+            $nav = $this->auth->user_get_nav();  
+            $data['css_include'] = css_include('tables.css');               
+            
+            
+            if(TRUE) 
+            {
+                $data['personas'] = $this->personas_model->all_proveedors();    
+            }
+            else 
+            {
+                #pass    
+            }
+            
+
+            $this->load->view('header', $data);
+            $this->load->view($nav, $data);
+            $this->load->view('personas/buscar_proveedor', $data);
+            $this->load->view('footer');               
+               
+        }    
+        elseif ($this->auth->user_is_logged())
+        {
+            #usuario logueado pero no tiene permisos    
+        }
+
+        else 
+        {
+            #usuario no logueado
+            redirect('/session/login');
+        }      
+    } 
+    
+    
     public function search($type, $param="")
     {
         if ($type == "cliente")
         {
             $this->search_client($param);
+        }
+        elseif ($type == "proveedor")
+        {
+            $this->search_proveedor($param);
         }
     }
 
@@ -207,6 +260,10 @@ class Personas extends CI_Controller {
             $data['pers']['prov'] = $this->provincias_model->get_name($pers['fk_id_prov']);
             $data['pers']['ciud'] = $this->ciudades_model->get_name($pers['fk_id_ciud']);
             $data['pers']['zona'] = $this->zonas_model->get_name($pers['fk_id_zona']);
+            
+            $data['pers']['es_cliente_pers'] = bool_to_str($data['pers']['es_cliente_pers']);
+            $data['pers']['es_proveedor_pers'] = bool_to_str($data['pers']['es_proveedor_pers']); 
+            
             
             $this->load->view('header', $data);
             $this->load->view($nav, $data);
@@ -252,6 +309,56 @@ class Personas extends CI_Controller {
             redirect('/session/login');
         }
     }  
+    
+    
+    public function habilitar($tipo="cliente",$id_pers)
+    {
+        if ($this->auth->user_is_logged() AND TRUE)
+        {
+            $this->load->model('personas_model');
+            
+            $data = array(
+                'page_title' => 'Habilitar '.$tipo,
+                'user' => $this->auth->user_get_login_info(),
+            );
+            
+            $pers = $this->personas_model->get_person_by_id($id_pers);            
+            if ($tipo == "cliente")
+            {
+                if ($pers['es_cliente_pers'] != TRUE)
+                {
+                    #pass
+                }
+                else 
+                {
+                    #pass
+                }
+            }
+            elseif ($tipo == "proveedor") 
+            {
+                if ($pers['es_proveedor_pers'] != TRUE)
+                {
+                    #pass
+                }
+                else 
+                {
+                    #pass
+                }    
+            }
+               
+               
+        }    
+        elseif ($this->auth->user_is_logged())
+        {
+            #usuario logueado pero no tiene permisos    
+        }
+
+        else 
+        {
+            #usuario no logueado
+            redirect('/session/login');
+        }        
+    }
     
     
 }
