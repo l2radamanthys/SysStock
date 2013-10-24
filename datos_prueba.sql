@@ -62,21 +62,22 @@ VALUES
     ('user', 'user', 'Vendedor', CURRENT_TIMESTAMP , NULL)
 ;
 
-INSERT INTO `stock_db`.`personas` (
-`nro_dni_pers`, 
-`tipo_dni_pers`, 
-`nombre_pers`, 
-`apellido_pers`, 
-`direccion_pers`, 
-`fk_username_usr`, 
-`telefono_usr`, 
-`celular_usr`, 
-`email_usr`, 
-`fk_id_zona`, 
-`fk_id_ciud`, 
-`fk_id_prov`, 
-`fk_id_emp`
-)
-VALUES 
-    ('12345789', 'DNI', 'Juan', ' Perez', 'calle 123', 'user', '387-234-5678', '387-234-5678', 'user@usernet.com', '1' '1', '1', '1')
-;
+INSERT INTO `personas` (
+    `id_pers`, 
+    `nro_dni_pers`, 
+    `tipo_dni_pers`, 
+    `nombre_pers`, 
+    `apellido_pers`, 
+    `direccion_pers`, 
+    `fk_username_usr`, 
+    `telefono_usr`, 
+    `celular_usr`, 
+    `email_usr`, 
+    `observaciones_pers`, 
+    `fk_id_zona`, 
+    `fk_id_ciud`, 
+    `fk_id_prov`, 
+    `fk_id_emp`
+    ) VALUES 
+    ('', '123', 'DNI', 'Juan ', 'Perez', 'mi kasa', 'user', '387-234-5678', '387-234-5678', 'user@usernet.com', NULL, '1', '1', '1', '1');    
+

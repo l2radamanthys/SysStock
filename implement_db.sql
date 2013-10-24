@@ -130,33 +130,33 @@ DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_spanish2_ci;
  
  
--- -----------------------------------------------------
--- Table `db`.`Personas`
--- -----------------------------------------------------
+ 
 CREATE  TABLE IF NOT EXISTS `Personas` (
   `id_pers` INT NOT NULL AUTO_INCREMENT ,
-  `nro_dni_pers` INT NOT NULL DEFAULT 0,
-  `tipo_dni_pers` ENUM('','DNI', 'Visa', 'Libreta Civica', 'Libreta Enrrolamiento', 'Pasaporte', 'Otros') NOT NULL ,
-  `nombre_pers` VARCHAR(45) NULL DEFAULT '',
-  `apellido_pers` VARCHAR(45) NULL DEFAULT '',
-  `direccion_pers` VARCHAR(60) NULL DEFAULT '',  
+  `nro_dni_pers` INT NULL ,
+  `tipo_dni_pers` ENUM('DNI','Libreta Enrrolamiento', 'Libreta Civica', 'Pasaporte', 'Visa', 'Otros') NULL ,
+  `nombre_pers` VARCHAR(45) NULL ,
+  `apellido_pers` VARCHAR(45) NULL ,
+  `direccion_pers` VARCHAR(60) NULL ,
   `fk_username_usr` VARCHAR(16) NULL DEFAULT '' ,
-  `telefono_pers` VARCHAR(45) NULL DEFAULT '',
-  `celular_pers` VARCHAR(45) NULL DEFAULT '',
-  `email_pers` VARCHAR(45) NULL DEFAULT '',
-  `observaciones_pers` TEXT NULL,
-  `fk_id_zona` INT ,
-  `fk_id_ciud` INT ,
-  `fk_id_prov` INT ,
-  `fk_id_emp` INT ,
-  PRIMARY KEY (`nro_dni_pers`, `tipo_dni_pers`) ,
+  `telefono_usr` VARCHAR(45) NULL ,
+  `celular_usr` VARCHAR(45) NULL ,
+  `email_usr` VARCHAR(45) NULL ,
+  `observaciones_pers` TEXT NULL ,
+  `fk_id_zona` INT NULL ,
+  `fk_id_ciud` INT NULL ,
+  `fk_id_prov` INT NULL ,
+  `fk_id_emp` INT NULL ,
+  `es_cliente` TINYINT(1) NULL DEFAULT FALSE ,
+  `es_proveedor` TINYINT(1) NULL DEFAULT FALSE ,
+  PRIMARY KEY (`id_pers`) ,
   INDEX `fk_Usuarios_Personas1_idx` (`fk_username_usr` ASC) ,
   INDEX `fk_Zonas_Personas1_idx` (`fk_id_zona` ASC, `fk_id_ciud` ASC, `fk_id_prov` ASC) ,
   INDEX `fk_Empresas_Personas1_idx` (`fk_id_emp` ASC) ,
   CONSTRAINT `fk_Usuarios_Personas1`
     FOREIGN KEY (`fk_username_usr` )
     REFERENCES `Usuarios` (`username_usr` )
-    ON DELETE SET NULL
+    ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Zonas_Personas1`
     FOREIGN KEY (`fk_id_zona` , `fk_id_ciud` , `fk_id_prov` )
