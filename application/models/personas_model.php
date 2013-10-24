@@ -50,12 +50,25 @@ class Personas_model extends CI_Model {
     }
     
 
+    /*
+     * Registra una nueva persona
+     * 
+     * Author: Ricardo Quiroga
+     * 
+     * @param array $data diccionario asociativo con los campos a insertar
+     */
     public function register_person($data) 
     {
-        
+        return $this->db->insert($this->table_name, $data);
     }
 
-
+    
+    public function all()
+    {
+        $query = $this->db->query("SELECT * FROM ".$this->table_name);
+        return $query->result_array();
+    }
+    
     
     // realiza la insercion de datos
     function insert_person($fiel, $value)

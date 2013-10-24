@@ -139,7 +139,7 @@ CREATE  TABLE IF NOT EXISTS `Personas` (
   `nombre_pers` VARCHAR(45) NULL ,
   `apellido_pers` VARCHAR(45) NULL ,
   `direccion_pers` VARCHAR(60) NULL ,
-  `fk_username_usr` VARCHAR(16) NULL DEFAULT '' ,
+  `fk_username_usr` VARCHAR(16) NULL DEFAULT '',
   `telefono_pers` VARCHAR(45) NULL ,
   `celular_pers` VARCHAR(45) NULL ,
   `email_pers` VARCHAR(45) NULL ,
@@ -154,11 +154,11 @@ CREATE  TABLE IF NOT EXISTS `Personas` (
   INDEX `fk_Usuarios_Personas1_idx` (`fk_username_usr` ASC) ,
   INDEX `fk_Zonas_Personas1_idx` (`fk_id_zona` ASC, `fk_id_ciud` ASC, `fk_id_prov` ASC) ,
   INDEX `fk_Empresas_Personas1_idx` (`fk_id_emp` ASC) ,
-  CONSTRAINT `fk_Usuarios_Personas1`
-    FOREIGN KEY (`fk_username_usr` )
-    REFERENCES `Usuarios` (`username_usr` )
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
+--  CONSTRAINT `fk_Usuarios_Personas1`
+--    FOREIGN KEY (`fk_username_usr` )
+--    REFERENCES `Usuarios` (`username_usr` )
+--    ON DELETE CASCADE
+--    ON UPDATE CASCADE,
   CONSTRAINT `fk_Zonas_Personas1`
     FOREIGN KEY (`fk_id_zona` , `fk_id_ciud` , `fk_id_prov` )
     REFERENCES `Zonas` (`id_zona` , `fk_id_ciud` , `fk_id_prov` )
