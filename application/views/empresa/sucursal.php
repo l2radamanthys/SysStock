@@ -1,14 +1,13 @@
 ﻿<content class="one-section">
-    
+    <h1>Registro Sucursal  </h1> 
     <div class="window" style="width: 400px; margin: 20px auto;">
-        <h3>Registro Sucursal  </h3> 
+        
         
         <div class="win-cont">
         <? echo validation_errors(); ?>
         <?=form_open('');?>     
-            <p>Empresa
-            <input type="text" name="empresa"  value="<? echo set_value('razon_social'); ?>"/>   
-            <in 
+            <p>Empresa:<? echo set_value('razon_social'); ?>   
+            <input type="hidden" name="id_empresa" value="<? echo set_value('razon_social'); ?>"/> 
             </p>
             
             <p>Nombre Suc:
