@@ -28,7 +28,7 @@ class Personas_model extends CI_Model {
     
     
     /*
-     * 
+     * Obtiene la primera fila resultante mediante busqueda por usuario
      */
     public function get_person_by_user($user)
     {
@@ -75,7 +75,10 @@ class Personas_model extends CI_Model {
         return $this->db->insert($this->table_name, $data);
     }
 
-    
+
+    /*
+     * Muestra Todas Las Personas
+     */ 
     public function all()
     {
         $query = $this->db->query("SELECT * FROM ".$this->table_name);
@@ -83,11 +86,29 @@ class Personas_model extends CI_Model {
     }
     
     
+    /*
+     * Muestra todos los que esten marcado como clientes
+     */ 
     public function all_clients()
     {
         $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE es_cliente_pers = 1");
         return $query->result_array();
     }
+    
+
+    /*
+     * Muestra todos los que esten marcados com Proveedor
+     */     
+    public function all_proveedors()
+    {
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE es_proveedor_pers = 1");
+        return $query->result_array();
+    }
+    
+    /*
+     * Utiliza la busqueda mediante parecido osea LIKE
+     */ 
+    public function find($key)
     
     
     // realiza la insercion de datos
@@ -96,7 +117,17 @@ class Personas_model extends CI_Model {
         $query = $this->db->query("INSERT INTO ".$this->table_name."($fiel) VALUES ($value);");   
         return $query;
     }
-
+    
+    
+    /*
+     * Actualiza un campo de un registro por id
+     */
+    public function update_person_field($id_pers, $field, $val)
+    {
+        $data = array($field => $val);
+        $this->db->where('id_pers', $id_pers);
+        return $this->db->update($this->table_name, $data);
+    }    
 }
 
 

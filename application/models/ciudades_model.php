@@ -29,6 +29,7 @@ class Ciudades_model extends CI_Model {
     public function get_name($id)
     {
         $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE id_ciud='".$id."'");
-        return $query->row_array()['nombre_ciud'];                
+        $q = $query->row_array();
+        return $q['nombre_ciud'];                
     }
 } 
