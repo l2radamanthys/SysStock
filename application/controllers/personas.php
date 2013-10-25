@@ -318,32 +318,49 @@ class Personas extends CI_Controller {
             $this->load->model('personas_model');
             
             $data = array(
-                'page_title' => 'Habilitar '.$tipo,
+                #'page_title' => 'Habilitar '.$tipo,
                 'user' => $this->auth->user_get_login_info(),
             );
+            $nav = $this->auth->user_get_nav(); 
             
-            $pers = $this->personas_model->get_person_by_id($id_pers);            
+            $pers = $this->personas_model->get_person_by_id($id_pers);
+            $data['pers'] = $pers;            
             if ($tipo == "cliente")
             {
-                if ($pers['es_cliente_pers'] != TRUE)
+                $data['title'] = 'Habilitar Como Cliente';
+                $data['page_title'] = 'Habilitar Como Cliente';                 
+                if ($pers['es_cliente_pers'] != '1')
                 {
-                    #pass
+                    $data['error'] = FALSE;   
+                    $this->personas_model->update_person_field($id_pers,'es_cliente_pers',TRUE);          
                 }
                 else 
                 {
-                    #pass
+                    $data['error'] = TRUE;
                 }
+                $this->load->view('header', $data);
+                $this->load->view($nav, $data);
+                $this->load->view('personas/habilitar_cliente', $data);
+                $this->load->view('footer', $data);
             }
             elseif ($tipo == "proveedor") 
             {
-                if ($pers['es_proveedor_pers'] != TRUE)
+                $data['title'] = 'Habilitar Como Proveedor';
+                $data['page_title'] = 'Habilitar Como Proveedor';
+                if ($pers['es_proveedor_pers'] != '1')
                 {
-                    #pass
+                    $data['error'] = FALSE;   
+                    $this->personas_model->update_person_field($id_pers,'es_proveedor_pers',TRUE);          
                 }
                 else 
                 {
-                    #pass
+                    $data['error'] = TRUE;
                 }    
+                
+                $this->load->view('header', $data);
+                $this->load->view($nav, $data);
+                $this->load->view('personas/habilitar_proveedor', $data);
+                $this->load->view('footer', $data);
             }
                
                

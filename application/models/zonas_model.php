@@ -31,6 +31,13 @@ class Zonas_model extends CI_Model {
     {
         $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE id_zona='".$id."'");
         $q = $query->row_array();
-        return $q['nombre_zona'];                
+        if ($q == FALSE) 
+        {
+            return "Sin Definir";   
+        }
+        else 
+        {                   
+            return $q['nombre_zona'];
+        }                
     }    
 } 

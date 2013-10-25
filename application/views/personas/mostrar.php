@@ -90,8 +90,8 @@
     <ul class="submenu">
         <li><h3>Persona</h3></li>
         <li><a href="">Modficar Datos</a></li>
-        <li><a href="">Habilitar como Cliente</a></li> 
-        <li><a href="">Habilitar como Proveedor</a></li>
+        <li><a href="<?=base_url();?>personas/habilitar/cliente/<?=$pers['id_pers']?>">Habilitar como Cliente</a></li> 
+        <li><a href="<?=base_url();?>personas/habilitar/proveedor/<?=$pers['id_pers']?>">Habilitar como Proveedor</a></li>
         <li><h3>Articulos por Proveedor</h3></li>
         <li><a href="">Listado Articulo Proveedor</a></li>
         <li><a href="">Nuevo Articulo Proveedor</a></li>   
@@ -103,7 +103,8 @@
         <li><a href="">Nuevo Pedido Venta</a></li>
         <li><a href="">Pedidos Pendientes</a></li>
         <li><h3>Remitos</h3></li>
-        <li><a href="">Nuevo Remito Compra</a></li>
-        <li><a href="">Nuevo Remito Venta</a></li>
+        <li><a href="">Nuevo Remito Entrada</a></li>
+        <li><a href="">Nuevo Remito Salida</a></li>
+        <li><a href="">Remitos Pendiente</a></li>
     </ul>
 </aside>

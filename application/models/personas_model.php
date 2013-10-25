@@ -108,8 +108,10 @@ class Personas_model extends CI_Model {
     /*
      * Utiliza la busqueda mediante parecido osea LIKE
      */ 
-    public function find($key)
-    
+    public function find($key, $val) {
+        
+    }
+
     
     // realiza la insercion de datos
     function insert_person($fiel, $value)
