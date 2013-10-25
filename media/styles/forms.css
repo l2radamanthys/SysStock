@@ -92,6 +92,7 @@ label {
     font-size:10px;
     padding-left:10px;
     padding-right:10px;
+<<<<<<< HEAD
 }
 
 .der{
@@ -105,3 +106,17 @@ label {
     float:left;
     position:relative;
 }
+=======
+}
+
+
+.label {
+    font-weight: bold;
+    border: 0 !important;
+}
+
+
+
+
+
+>>>>>>> 7fbc9aa23d81fd89f964d6f46de80e75c10296bd

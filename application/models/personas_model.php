@@ -32,8 +32,21 @@ class Personas_model extends CI_Model {
      */
     public function get_person_by_user($user)
     {
-        return $this->get_person('fk_username_usr',$user);
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE  fk_username_usr='".$user."';");
+        return $query->row_array();
     }
+    
+    
+    /*
+     * Obtiene los Datos de la Persona desde la Vista que mescla los datos persona con los de la Empresa
+     */ 
+    public function get_person_by_id($id)
+    {
+        $query = $this->db->query("SELECT * FROM personaempresa WHERE id_pers=".$id.";");        
+        return $query->row_array();
+        #return $this->get_person('id_pers', $id);
+    }
+    
     
     
     // realiza cambios  en la entidad persona
@@ -50,12 +63,32 @@ class Personas_model extends CI_Model {
     }
     
 
+    /*
+     * Registra una nueva persona
+     * 
+     * Author: Ricardo Quiroga
+     * 
+     * @param array $data diccionario asociativo con los campos a insertar
+     */
     public function register_person($data) 
     {
-        
+        return $this->db->insert($this->table_name, $data);
     }
 
-
+    
+    public function all()
+    {
+        $query = $this->db->query("SELECT * FROM ".$this->table_name);
+        return $query->result_array();
+    }
+    
+    
+    public function all_clients()
+    {
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE es_cliente_pers = 1");
+        return $query->result_array();
+    }
+    
     
     // realiza la insercion de datos
     function insert_person($fiel, $value)

@@ -1,0 +1,1 @@
+CREATE VIEW PersonaEmpresa AS SELECT * FROM personas as pers INNER JOIN empresas as emp ON pers.fk_id_emp = emp.id_emp

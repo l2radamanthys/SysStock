@@ -124,3 +124,31 @@
 .menu ul li:last-child a {
     border: 1 px solid #AAA;
 }
+
+
+/****************************/
+/* Sub Menu */
+.menu  {
+    list-style-type: none;
+    padding: 0;
+}
+
+.submenu li a {
+    text-decoration: None;
+    font-size: 10pt;
+    color: #444;
+    background-color: #E5E5E5;
+    width: 180px;
+    display: block;
+    padding: 8px 10px;
+    margin-bottom: 3px;
+}
+
+.submenu li a:hover {
+    background-color: #CCC;
+}
+
+.submenu li h3 {
+    font-size: 12pt;
+}
+

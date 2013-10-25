@@ -3,8 +3,8 @@
             <ul class="menu">
                     <li><a href="#">Clientes</a>  
                     <ul>
-                        <li><a href="#">Buscar</a></li>
-                        <li><a href="#">Nuevo Cliente</a></li>                                                                        
+                        <li><a href="<?=base_url();?>personas/search/cliente/">Buscar Cliente</a></li>
+                        <li><a href="<?=base_url();?>personas/create/cliente">Nuevo Cliente</a></li>                                                                        
                     </ul></li>
                     <li><a href="#">Empresas</a>  
                     <ul>

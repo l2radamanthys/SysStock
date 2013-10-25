@@ -23,5 +23,12 @@ class Ciudades_model extends CI_Model {
         return $query->result_array();
     }
      
-    
+    /*
+     * Devuelve el nombre de la ciudad pasando el ID
+     */
+    public function get_name($id)
+    {
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE id_ciud='".$id."'");
+        return $query->row_array()['nombre_ciud'];                
+    }
 } 
