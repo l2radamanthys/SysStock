@@ -49,5 +49,33 @@ class Http_response extends CI_Controller {
             echo '<option value="'.$row['id_zona'].'">'.$row['nombre_zona'].'</option>';
         }         
     }
+
+    
+    /*
+     * muestra en un select el listado de subcategorias
+     * 
+     * 
+     */
+    public function subcat_for_cat() 
+    {
+        $this->load->model('subcategorias_model');
+        if (isset($_POST['id_cat'])) 
+        {
+            $id_cat = $this->input->post('id_cat');
+        }
+        else {
+            $id_cat = 1;
+        }
+        $result = $this->subcategorias_model->all_by_cat($id_cat);
+        foreach ($result as $row) 
+        {
+            echo '<option value="'.$row['id_scat'].'">'.$row['nombre_scat'].'</option>';
+        }        
+    } 
+
     
 }
+
+
+
+

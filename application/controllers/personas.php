@@ -14,11 +14,11 @@ class Personas extends CI_Controller {
     public function create($type='')
     {
         if ($this->auth->user_is_logged() AND TRUE)
-        {
-            $this->load->helper('form');
+        {            
             $this->load->library('form_validation');
             $this->load->model('provincias_model');
             $this->load->model('empresas_model');
+            $this->load->helper('form');
             $this->load->helper('utils');
             
             $data = array(
@@ -27,7 +27,9 @@ class Personas extends CI_Controller {
                 'user' => $this->auth->user_get_login_info(),
             );
             $nav = $this->auth->user_get_nav();
-                      
+            
+            $this->load->view('header', $data);
+            $this->load->view($nav, $data);                     
                             
             #adapto la vista segun el tipo de Persona a Registrar                                   
             if ($type == 'cliente') 
@@ -52,13 +54,11 @@ class Personas extends CI_Controller {
                 $data['success'] = "registrar_proveedor_success";
             }                
             
-            
             $data['show_errors'] = FALSE; #mostrar error
             $data['custom_error']='';     #error personalizado si lo hay      
             $data['provincias'] = $this->provincias_model->all();
             $data['empresas'] = $this->empresas_model->all_by_name();
-            
-            
+
             if ($this->form_validation->run('persona') != FALSE) 
             {
                 $form_data = array(
@@ -85,30 +85,21 @@ class Personas extends CI_Controller {
                 
                 if ($result) 
                 {
-                    $this->load->view('header', $data);
-                    $this->load->view($nav, $data);
                     $this->load->view('personas/'.$data['success'], $data);
-                    $this->load->view('footer', $data);
                 }
 
                 else 
                 {
                     #opps    
-                    $this->load->view('header', $data);
-                    $this->load->view($nav, $data);
                     $this->load->view('personas/registrar', $data);
-                    $this->load->view('footer', $data);
                 }
 
             }
             else {
                 $data['show_errors'] = TRUE;
-
-                $this->load->view('header', $data);
-                $this->load->view($nav, $data);
                 $this->load->view('personas/registrar', $data);
-                $this->load->view('footer', $data);
             }
+            $this->load->view('footer', $data);
 
         }        
 
@@ -134,11 +125,13 @@ class Personas extends CI_Controller {
      */     
     public function search_client($query="")
     {
+        $this->load->helper('form');
+        $this->load->helper('utils');
+        
         if ($this->auth->user_is_logged() AND TRUE)
         {
             $this->load->model('personas_model');
-            $this->load->helper('utils');  
-              
+
             $data = array(
                 'page_title' => 'Buscar Cliente',
                 'user' => $this->auth->user_get_login_info(),
@@ -146,17 +139,31 @@ class Personas extends CI_Controller {
             $nav = $this->auth->user_get_nav();  
             $data['css_include'] = css_include('tables.css');               
             
-            $data['personas'] = $this->personas_model->all_clients();
+            
 
             $this->load->view('header', $data);
             $this->load->view($nav, $data);
-            $this->load->view('personas/buscar_cliente', $data);
-            $this->load->view('footer');               
                
+                          
+            if (!isset($_POST['field']))
+            {
+                $data['personas'] = $this->personas_model->all_clients();
+            }
+            else 
+            {
+                $key = $this->input->post('field');
+                $match = $this->input->post('query');                               
+                $data['personas'] = $this->personas_model->find_client($key, $match);
+            }
+            
+            $this->load->view('personas/buscar_cliente', $data);
+            $this->load->view('footer');   
+                   
         }    
         elseif ($this->auth->user_is_logged())
         {
-            #usuario logueado pero no tiene permisos    
+            #usuario logueado pero no tiene permisos   
+
         }
 
         else 
@@ -194,7 +201,7 @@ class Personas extends CI_Controller {
             }
             else 
             {
-                #pass    
+                $data['personas'] = $this->personas_model->all_proveedors();    
             }
             
 

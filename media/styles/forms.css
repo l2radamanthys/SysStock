@@ -84,6 +84,19 @@ label {
     //border-bottom-right-radius: 8px;
     //border-bottom-left-radius: 8px;
 }
+
+/*******************************************
+* Modificaciones Para JQuery UI
+********************************************/
+
+.ui-spinner {
+    font-family: Segoe-UI !important; 
+    font-size: 10pt !important;
+}
+
+
+
+
 /*************************************
  *Funciones  Auxiliares
  * ******************************* */
@@ -92,7 +105,10 @@ label {
     font-size:10px;
     padding-left:10px;
     padding-right:10px;
-<<<<<<< HEAD
+}
+
+.text-der {
+    text-align: right;
 }
 
 .der{
@@ -106,17 +122,9 @@ label {
     float:left;
     position:relative;
 }
-=======
-}
 
 
 .label {
     font-weight: bold;
     border: 0 !important;
 }
-
-
-
-
-
->>>>>>> 7fbc9aa23d81fd89f964d6f46de80e75c10296bd

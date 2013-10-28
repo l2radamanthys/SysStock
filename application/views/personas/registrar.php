@@ -52,7 +52,7 @@
 <section class="one-section">
     <h1><?=$title;?></h1>
     
-    <div id="dialog" title="Cargando" style="display: None;">
+    <div id="dialog" style="display: None;">
         <p>Cargando espere un momento...</p>
     </div>
     

@@ -69,3 +69,32 @@ CREATE  TABLE IF NOT EXISTS `ArticulosPorSubCategoria` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_spanish2_ci;
+
+
+CREATE  TABLE IF NOT EXISTS `LoteArticulos` (
+  `id_lote` INT NOT NULL AUTO_INCREMENT ,
+  `fk_id_art` INT NOT NULL ,
+  `fk_id_emp` INT NOT NULL ,
+  `codigo_lote` VARCHAR(20) NULL DEFAULT '' ,
+  `fecha_ingreso_lote` TIMESTAMP NULL DEFAULT NOW() ,
+  `fecha_vencimiento_lote` DATE NULL ,
+  `stock_disponible_lote` INT NULL DEFAULT 0 ,
+  `stock_ingreso_lote` INT NULL DEFAULT 0 ,
+  `fecha_not_vencimiento_lote` DATE NULL ,
+  `not_vencimiento_lote` TINYINT(1) NULL DEFAULT FALSE ,
+  PRIMARY KEY (`id_lote`, `fk_id_emp`, `fk_id_art`) ,
+  INDEX `fk_Articulos_LoteArticulos1_idx` (`fk_id_art` ASC) ,
+  INDEX `fk_Empresas_LoteArticulos1_idx` (`fk_id_emp` ASC) ,
+  CONSTRAINT `fk_Articulos_LoteArticulos1`
+    FOREIGN KEY (`fk_id_art` )
+    REFERENCES `Articulos` (`id_art` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Empresas_LoteArticulos1`
+    FOREIGN KEY (`fk_id_emp` )
+    REFERENCES `Empresas` (`id_emp` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish2_ci;

@@ -91,7 +91,7 @@ class Personas_model extends CI_Model {
      */ 
     public function all_clients()
     {
-        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE es_cliente_pers = 1");
+        $query = $this->db->query("SELECT * FROM personaempresa WHERE es_cliente_pers = 1");
         return $query->result_array();
     }
     
@@ -106,10 +106,12 @@ class Personas_model extends CI_Model {
     }
     
     /*
-     * Utiliza la busqueda mediante parecido osea LIKE
+     * Utiliza la busqueda sobre la vista mediante parecido osea LIKE
+     * para buscar CLiente
      */ 
-    public function find($key, $val) {
-        
+    public function find_client($key, $val) {
+        $query = $this->db->query("SELECT * FROM personaempresa WHERE ".$key." LIKE '%".$val."%' AND es_cliente_pers = 1;");
+        return $query->result_array(); 
     }
 
     

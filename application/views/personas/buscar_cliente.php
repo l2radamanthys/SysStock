@@ -11,13 +11,14 @@
     <h1>Buscar Cliente</h1>
     
     <div style="margin: 0 auto; width: 500px;" >
-        <select name="field">
-            <option value="nombre">Nombre</option>
-            <option value="apellido">Apellido</option>
-            <option value="dni">Documento</option>
-            <option value="empresa">Empresa</option>
+        <?=form_open('personas/search/cliente/');?>
+        <select name="field" <?=set_select('field')?>>
+            <option value="nombre_pers">Nombre</option>
+            <option value="apellido_pers">Apellido</option>
+            <option value="nro_dni_pers">Documento</option>
+            <option value="nombre_emp">Empresa</option>
         </select>
-        <input type="text" name="query" size="35"/>
+        <input type="text" name="query" size="35" value="<?=set_value('query')?>"/>
         <input type="submit" value="Buscar" />
         </form>        
     </div>
@@ -35,8 +36,8 @@
         <tr>
             <td><?=$pers['nombre_pers']?></td>
             <td><?=$pers['apellido_pers']?></td>
-            <td><?=$pers['fk_id_emp']?></td>
-            <td><?=$pers['nro_dni_pers']?></td>
+            <td><?=$pers['razon_social_emp']?></td>
+            <td><?=$pers['tipo_dni_pers']?> <?=$pers['nro_dni_pers']?></td>
             <td><a href="<?=base_url()?>personas/show/<?=$pers['id_pers']?>">Mostrar</a></td>                        
         </tr>
     <? endforeach; ?>    

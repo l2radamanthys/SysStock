@@ -8,7 +8,13 @@ $config = array(
         
     ), 
     
-    
+    'articulo' => array(
+        array('field' => 'nombre_art', 'label' => 'Nombre Articulos', '' => 'required'),
+        #array('field' => '', 'label' => '', '' => 'required|numeric'),
+        #array('field' => '', 'label' => '', '' => 'required|numeric'),
+        #array('field' => '', 'label' => '', '' => 'required|numeric'),
+        
+    ),
     
 );
 

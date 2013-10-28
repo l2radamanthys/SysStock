@@ -1,9 +1,11 @@
 <?php
 
 /*
- * Remplaza un valor '' por NULL
- * 
+ * Remplaza un valor en caso que sea una cadena vacia '' por NULL 
  * Author: Ricardo Quiroga
+ * 
+ * @param string $val
+ * @return NULL OR string
  */
 function blanc_to_null($val) 
 {
@@ -16,7 +18,10 @@ function blanc_to_null($val)
 
 
 /*
- * Genera un tag de inclusion css
+ * Genera un tag de inclusion css pasando 
+ * 
+ * @param string $style    
+ * @return string
  */
 function css_include($style)
 {    
@@ -24,6 +29,13 @@ function css_include($style)
 }
 
 
+/*
+ * Convierte un resultado Booleano en un string legible por personas
+ * Author: Ricardo Quiroga
+ * 
+ * @param boolean $val
+ * @return string 
+ */
 function bool_to_str($val)
 {
     if ($val == TRUE)
