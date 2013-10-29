@@ -7,10 +7,8 @@ class Empresas_model extends CI_Model {
     { 
         $this->load->database(); 
         $this->table_name = 'Empresas'; 
-    } 
-     
-    
-    
+        $this-> data =array();
+    }       
     
     /*
      * Obtiene listado de todas las empresas ordenadas por nombre
@@ -41,7 +39,18 @@ class Empresas_model extends CI_Model {
     {
          $query = $this->db->query("INSERT INTO ".$this->table_name."($fiel) VALUES($values);");
          return $query;
+    }    
+    
+    /*
+     * Registra una nueva empresa
+     * 
+     * @param $data array
+     */
+    public function register($data) 
+    {
+        return $this->db->insert($this->table_name, $data);
     }
+    
     
     // realiza la consulta de una empresa
     function consult_empresa($condition)
@@ -51,14 +60,10 @@ class Empresas_model extends CI_Model {
     }
     
     // modifica los datos
-    function modify_empresa($fiel, $value, $condition)
+    function modify_empresa($data, $condition)
     {
-                
+       return $this->db->update($this->table_name, $data, $condition);            
     }
     
-    // 
-    function estatus()
-    {
-                
-    }
+   
 }
