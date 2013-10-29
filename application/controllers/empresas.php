@@ -64,7 +64,7 @@
             }             
             else
             {
-                echo "Empresa ya registrada";
+                echo "Empresa ya registrada"; //mejorar aqui
             }
                          
             $this ->load ->view('empresa/registro_success') ;           
@@ -75,6 +75,16 @@
         }        
        
         $this->load->view("footer");
+    }
+
+    // Busca las empresas 
+    function buscar_empresas()
+    {
+        $this->load->library('form_validation');
+        $this->load->view("header");
+        $this->load->view("nav"); 
+        $this->form_validation->set_rules('query','Query','required');
+        
     }
     
  }

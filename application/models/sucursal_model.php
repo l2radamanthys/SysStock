@@ -23,7 +23,14 @@
      // realiza la consulta de sucursal
      function consult_sucursal($condition)
      {
-         $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$condition);
+         if($condition == "")
+         {
+             $query = $this->db->query("SELECT * FROM ".$this->table_name.";");  
+         }
+         else
+         {
+           $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$condition.";");   
+         }        
          return $query;
      }
      
@@ -42,9 +49,9 @@
      }
      
      // elimina una sucursal, hay que ver si cambiarla de estado o no
-     function delete_sucursal()
+     function delete_sucursal($id)
      {         
-         
+        return $this->db->delete($this->table_name,"id_suc=".$id);   
      }
  }
 
