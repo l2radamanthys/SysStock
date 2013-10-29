@@ -84,11 +84,20 @@
             <input type="text" name="stock_min_art" id="stock_min_art" size="5" maxlength="10" value="0" />    
             </p>   
             
-            <p>
+            <p style="float: left; width: 160px;">
             <label>Stock Maximo:</label>
             <input type="text" name="stock_max_art" id="stock_max_art" size="5" maxlength="10" value="0" />    
             </p>   
-            <div style="clear: both;"></div>
+            
+            
+            <p>
+            <label>Alertas Stock:</label>
+            <div id="not_stock_art">
+                <input type="radio" name="not_stock_art" value="1" id="not_stock_art0" checked="checked"/><label for="not_stock_art0" style="font-size: 10pt;">Si</label>
+                <input type="radio" name="not_stock_art" value="0" id="not_stock_art1"/><label for="not_stock_art1" style="font-size: 10pt;">No</label>
+            </div>
+            </p>                                                   
+            <div style="clear: both;"></div>     
             
            
             <p style="float: left; width: 200px;">
@@ -122,14 +131,7 @@
             </p>   
             <div style="clear: both;"></div -->
             
-            <p>
-            <label>Notificar Stock Bajo y Sobre Stock:</label>
-            <div id="not_stock_art">
-                <input type="radio" name="not_stock_art" value="1" id="not_stock_art0" checked="checked"/><label for="not_stock_art0" style="font-size: 10pt;">Si</label>
-                <input type="radio" name="not_stock_art" value="0" id="not_stock_art1"/><label for="not_stock_art1" style="font-size: 10pt;">No</label>
-            </div>
-            </p>                                                   
-                                   
+                    
             <br />
             <p style="text-align: center">
                 <input type="submit" value="Registrar" />

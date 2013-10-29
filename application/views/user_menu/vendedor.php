@@ -16,7 +16,7 @@
                     
                     <li><a href="#">Articulos</a>  
                     <ul>
-                        <li><a href="#">Buscar Articulo</a></li>
+                        <li><a href="<?=base_url();?>articulos/search">Buscar Articulo</a></li>
                         <li><a href="<?=base_url();?>articulos/create">Nuevo Articulo</a></li>                                                                        
                     </ul></li>  
                     

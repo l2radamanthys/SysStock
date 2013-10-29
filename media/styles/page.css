@@ -2,6 +2,10 @@
     font-family: Verdana;
 }
 
+body {
+    background-color: #E3E3E3;
+}
+
 
 h1, h2, h3, p {
     font-family: Segoe-UI, Helvetica, Verdana;
@@ -37,6 +41,7 @@ p {
 }
 
 
+
 .header-cont {
     background-color: #005782;
 }
@@ -50,8 +55,9 @@ p {
 
 .header .title {
     color: #F7F7F7;
+    font-family: Segoe-UI;
     font-size: 24pt;
-    padding: 10px 30px;
+    padding: 0px 30px;
 
     text-shadow: 0px 0px 2px #AFAFAF;
 }

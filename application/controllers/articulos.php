@@ -21,6 +21,7 @@ class Articulos extends CI_Controller {
         if ($this->auth->user_is_logged() AND TRUE)
         {
             $this->load->model('categorias_model');
+            $this->load->model('articulosporsubcategoria_model');
             $this->load->library('form_validation');    
             $this->load->helper('form');
             $this->load->helper('utils');
@@ -86,27 +87,25 @@ class Articulos extends CI_Controller {
                     {
                         $artscat_data = array(
                             'fk_id_art' => $id_art,    
-                            'fk_id_cat' => $this->input->post('id_cat'),
+                            'fk_fk_id_cat' => $this->input->post('id_cat'),
                             'fk_id_scat' => $this->input->post('id_scat'),
                         );
-                    }
-                    
-                
-                
+                        $this->articulosporsubcategoria_model->register($artscat_data);
+                        $this->load->view('articulos/registrar_success', $data);
+                    }      
+                    else 
+                    {
+                        $this->load->view('articulos/registrar', $data);
+                        $data['show_errors'] = TRUE;
+                        $data['custom_errors'] = "Error Desconocido";
+                    }              
                 }
+                
                 else
                 {
                     $this->load->view('articulos/registrar', $data);
-                    $data['show_errors'] = TRUE;
-                    $data['custom_errors'] = "Error ";
-                }    
-                
-                
-                #print_r($art_data);
+                }                                   
             }
-            
-            
-            
             $this->load->view('footer', $data);   
                
         }    
@@ -144,16 +143,20 @@ class Articulos extends CI_Controller {
             $nav = $this->auth->user_get_nav();
             $data['css_include'] = css_include('tables.css');
  
-               
             $this->load->view('header', $data);
             $this->load->view($nav, $data);     
             
+            if (isset($_POST['query'])) 
+            {
+                
+            }
+            else 
+            {
+                $data['articulos'] = $this->articulos_model->all();
+            }
+                                   
             
-            
-            
-            $this->load->view('articulos/buscar', $data);
-                 
-               
+            $this->load->view('articulos/buscar', $data);                
             $this->load->view('footer', $data);   
         }    
         elseif ($this->auth->user_is_logged())
@@ -167,4 +170,48 @@ class Articulos extends CI_Controller {
             redirect('/session/login');
         }
     }  
+
+    /*
+     * Muestra la Informacion del articulo
+     * 
+     * Autor: Ricardo Quiroga
+     */
+    public function show($id_art)
+    {
+        $this->load->model('articulosporsubcategoria_model');
+        $this->load->helper('utils');
+        
+        if ($this->auth->user_is_logged() AND TRUE)
+        {
+            $data = array (
+                'page_title' => 'Buscar Articulo',
+                'title' => 'Buscar Articulo',
+                'user' => $this->auth->user_get_login_info(),
+            );
+            $nav = $this->auth->user_get_nav();
+            $data['css_include'] = css_include('tables.css'); 
+             
+            $this->load->view('header', $data);
+            $this->load->view($nav, $data); 
+            
+            $data['art'] = $this->articulos_model->get($id_art);
+            $data['categorias'] = $this->articulosporsubcategoria_model->filter($data['art']['id_art']);     
+                 
+            $this->load->view('articulos/mostrar', $data);
+            $this->load->view('footer', $data);    
+               
+        }    
+        elseif ($this->auth->user_is_logged())
+        {
+            #usuario logueado pero no tiene permisos    
+        }
+
+        else 
+        {
+            #usuario no logueado
+            redirect('/session/login');
+        }        
+    }
+    
+    
 }

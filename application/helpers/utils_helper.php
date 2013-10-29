@@ -16,6 +16,35 @@ function blanc_to_null($val)
     return $val;
 }
 
+/*
+ * Completa con un caracter a eleccion, en caso de recivirse una cadena vacia
+ * 
+ * Autor: Ricardo Quiroga
+ * 
+ * @param string $var
+ * @param string $char
+ * @param int $lenght
+ */ 
+function complete_char($var, $char='-', $lenght=6)
+{
+    if ($var == '' OR $var == NULL)
+    {
+        $str = "";
+        $i=0;
+        while ($i < $lenght)
+        {
+            $str .= $char;
+            $i++;
+        }
+        return $str;
+    }
+    else 
+    {
+        return $var; 
+    }
+}
+
+
 
 /*
  * Genera un tag de inclusion css pasando 

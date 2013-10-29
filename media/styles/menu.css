@@ -152,3 +152,34 @@
     font-size: 12pt;
 }
 
+
+.sub-menu h3 {
+    font-family: Segoe-UI;
+    font-size: 10pt;
+    font-weight: bold;
+
+}
+
+.ui-accordion-content {
+    padding: 3px 5px !important;
+}
+
+.child-menu {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+}
+
+.child-menu a {
+    font-size: 10pt;
+    text-decoration: None;
+    display: block;
+    padding: 5px 5px;
+    margin-bottom: 2px;
+    border: 1px solid #AAA;
+}
+
+.child-menu a:hover {
+    background-color: #E5E5E5;
+}

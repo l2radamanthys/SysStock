@@ -7,20 +7,19 @@
 
 
 <section class="one-section">
-        
-    <h1><?=$title;?></h1>
-    
-    <div style="width: 500px; margin: 0 auto;">
-        <div class="notify-success">
-            El cliente fue registrado exitosamente.
+    <div class="window" style="width: 400px; margin: 0 auto;">
+        <h3><?=$title;?></h3>
+        <div class="win-cont">
+            <p style="text-align:center">
+                El Proveedor fue registrado exitosamente.
+            </p>
+            
+            <br />
+            
+            <p style="text-align:center">
+                <a href="<?=base_url()?>personas/search/proveedor/" id="button">Continuar</a>
+            </p>
         </div>
-        
-        <br />
-        <p style="text-align:center">
-            <a href="<?=base_url()?>personas/search/proveedor/" id="button">Continuar</a>            
-        </p>
-    
-    </div>
-    
+    </div> 
     
 </section>

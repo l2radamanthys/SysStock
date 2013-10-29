@@ -5,21 +5,21 @@
     });
 </script>
 
-
 <section class="one-section">
+    
     <div class="window" style="width: 400px; margin: 0 auto;">
-        <h3><?=$title;?></h3>
+        <h3>Registrar Articulo</h3>
         <div class="win-cont">
             <p style="text-align:center">
-                El cliente fue registrado exitosamente.
+                El Articulo Fue Registrado con Exito.
             </p>
             
             <br />
             
             <p style="text-align:center">
-                <a href="<?=base_url()?>personas/search/cliente" id="button">Continuar</a>
+                <a href="<?=base_url();?>articulos/search" id="button">Continuar</a>
             </p>
         </div>
-    </div> 
+    </div>
     
 </section>
