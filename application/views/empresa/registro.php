@@ -1,8 +1,54 @@
-﻿<script type="text/javascript">
+﻿<script type="text/javascript">    
+    //metodo ajax que actualiza el campo ciudades cuando se actualuaza prov
+    function updCitiesForProv() {
+        var value = $("#fk_id_prov option:selected").val();
+        var params = { 'id_prov': value };        
+        
+        $.ajax({
+            data: params,
+            url: "<?=base_url();?>http_response/cities_for_state",
+            type: 'post',
+            beforeSend: function () {
+                //$("#result").html("Procesando, espere por favor...");
+                $("#dialog").dialog();
+            },
+            success: function(response) {                
+                $("#fk_id_ciud").html(response);
+                updZonesForCity();
+                $("#dialog").dialog('close');
+            }    
+        });        
+    }
+
+    
+    function updZonesForCity() {
+        var value = $("#fk_id_ciud option:selected").val();
+        var params = { 'id_ciud': value };
+        
+        $.ajax({
+            data: params,
+            url: "<?=base_url();?>http_response/zones_for_city",
+            type: 'post',
+            beforeSend: function () {
+                $("#dialog").dialog();
+            },
+            success: function(response) {
+                $("#fk_id_zona").html(response);
+                $("#dialog").dialog('close');
+            }    
+        });    
+    }
+    
+    //ejecutar al inicio
     $(function() {
-        $('input[type=submit]').button()   
+        $('input[type=submit]').button();
+        $('input[type=reset]').button();
+        updCitiesForProv();
+        updZonesForCity();    
     });  
 </script>
+
+
 <content class="one-section">
     <h1> Registro de Empresas </h1>
     <div class="window" style="width: 800px; margin: 20px auto;">
@@ -15,11 +61,11 @@
             <div style="float:left;"> 
             <p><label>Tipo Empresa:</label>
                 <select name="tipo" />
-                    <option value="1">Responsable Inscripto</option>
-                    <option value="2">Responsable no Inscripto</option>
-                    <option value="3">Excento</option>
-                    <option value="4">Consumidor Final</option>
-                    <option value="5">Monotributo</option>
+                    <option >Responsable Inscripto</option>
+                    <option >Responsable no Inscripto</option>
+                    <option >Excento</option>
+                    <option >Consumidor Final</option>
+                    <option >Monotributo</option>
                 </select>
                  </p>
              </div>
@@ -40,6 +86,12 @@
                  <label>Email: </label>
                  <input type="text" name="email" value="<? echo set_value('email'); ?>" id="email" size="40"/>
              </p>
+             <p>
+                 <label>Horario: </label>
+                 <input type="text" name="horario" value="<? echo set_value('horario'); ?>" id="horario" size="40"/>
+             </p>
+             
+            
         </div>
          
          <div class="der">
@@ -59,9 +111,27 @@
              </p>
              
              <p>
-                 <label>Horario: </label>
-                 <input type="text" name="horario" value="<? echo set_value('horario'); ?>" id="horario" size="40"/>
-             </p>
+            <label>Provincia:</label>
+            <select name="fk_id_prov" id="fk_id_prov" size="1"  style="min-width: 250px;">   
+            <? foreach ($provincias as $row): ?>
+                <option value="<?=$row['id_prov'];?>"><?=$row['nombre_prov']?></option>
+            <? endforeach; ?>
+            </select>             
+            </p>
+            
+            <p>
+            <label>Ciudad:</label>
+            <select name="fk_id_ciud" id="fk_id_ciud" size="1" onchange="updZonesForCity(); return false;" style="min-width: 250px;">   
+                <option>Sin Definir</option>
+            </select>            
+            </p>            
+
+            <p>
+            <label>Zona:</label>
+            <select name="fk_id_zona" id="fk_id_zona" size="1" style="min-width: 250px;">   
+                <option>Sin Definir</option>
+            </select>       
+            </p>
          </div>
          
          <div style="clear: both"></div>
