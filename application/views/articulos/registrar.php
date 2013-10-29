@@ -45,7 +45,7 @@
         
             <p>
             <label>Codigo Articulo:</label>
-            <input type="text" name="codigo_art" id="codigo_art" size="10" maxlength="20"/>    
+            <input type="text" name="codigo_art" id="codigo_art" size="10" value="<?=set_value('codigo_art');?>" maxlength="20"/>    
             </p>
 
             <p>
@@ -53,26 +53,31 @@
             <input type="text" name="nombre_art" id="nombre_art" size="45" maxlength="45"/>    
             </p>
 
+            <p>
+            <label>Detalle Articulo:</label>
+            <textarea name="detalle_art" id="detalle_art" rows="4" style="width: 440px;"></textarea    
+            </p>
+
             <p style="float: left; width: 160px;">
             <label>Precio Costo:</label>
-            <input type="text" name="precio_costo_art" id="precio_costo_art" size="10" maxlength="21" value="0.00" class="text-der"/>    
+            <input type="text" name="precio_costo_art" id="precio_costo_art" size="8" maxlength="21" value="<?=set_value('precio_costo_art', '0.00')?>" class="text-der"/>    
             </p>                        
             
             <p style="float: left; width: 160px;">
             <label>Precio de Venta:</label>
-            <input type="text" name="precio_venta_art" id="precio_venta_siva_art" size="10" maxlength="21" value="0.00" class="text-der"/>    
+            <input type="text" name="precio_venta_art" id="precio_venta_siva_art" size="8" maxlength="21" value="0.00" class="text-der"/>    
             </p>            
             
             <p>
             <label>Precio de Lista:</label>
-            <input type="text" name="precio_venta_lista_art" id="precio_venta_civa_art" size="10" class="text" value="0.00" class="text-der"/>    
+            <input type="text" name="precio_venta_lista_art" id="precio_venta_civa_art" size="8" value="0.00" class="text-der"/>    
             </p>   
             <div style="clear: both;"></div>
                      
-            <p style="float: left; width: 160px;">
+            <!-- p style="float: left; width: 160px;">
             <label>Stock Actual:</label>
             <input type="text" name="stock_art" id="stock_art" size="5" maxlength="10" value="0" />    
-            </p>   
+            </p -->   
             
             <p style="float: left; width: 160px;">
             <label>Stock Minimo:</label>
@@ -103,7 +108,7 @@
             </p>
             <div style="clear: both;"></div>
             
-            <p style="float: left; width: 200px;">
+            <!-- p style="float: left; width: 200px;">
             <label>Vencimiento Lote Actual:</label>
             <input type="text" name="fecha_venc_lote" id="fecha_venc_lote" size="10" />    
             </p>
@@ -115,7 +120,7 @@
                 <input type="radio" name="not_venc_lote" value="0" id="not_venc_lote1"/><label for="not_venc_lote1" style="font-size: 10pt;">No</label>
             </div>
             </p>   
-            <div style="clear: both;"></div>
+            <div style="clear: both;"></div -->
             
             <p>
             <label>Notificar Stock Bajo y Sobre Stock:</label>
@@ -124,11 +129,7 @@
                 <input type="radio" name="not_stock_art" value="0" id="not_stock_art1"/><label for="not_stock_art1" style="font-size: 10pt;">No</label>
             </div>
             </p>                                                   
-            <p>
-            <label>Detalle Articulo:</label>
-            <textarea name="detalle_art" id="detalle_art" rows="4" style="width: 440px;"></textarea    
-            </p>
-            
+                                   
             <br />
             <p style="text-align: center">
                 <input type="submit" value="Registrar" />

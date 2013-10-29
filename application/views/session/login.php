@@ -13,7 +13,7 @@
         <div class="win-cont">
         <?=form_open('');?>     
             <p><label>Usuario:</label>
-            <input type="text" name="username" />    
+            <input type="text" name="username" value="<?=set_value('username');?>"/>    
             </p>
             
             <p><label>Contraseña:</label>

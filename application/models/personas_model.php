@@ -15,9 +15,10 @@ class Personas_model extends CI_Model {
      * compara. Retornara el registro resultante o FALSE en caso que no ubiese 
      * ninguna coincidencia 
      * 
-     * @param string $field nombre del campo
-     * @param string $value valor del campo a comparar
+     * Autor: Ricardo Quiroga
      * 
+     * @param string $field nombre del campo
+     * @param string $value valor del campo a comparar   
      * @return array OR Boolean  
      */
     public function get_person($field, $value)
@@ -29,6 +30,8 @@ class Personas_model extends CI_Model {
     
     /*
      * Obtiene la primera fila resultante mediante busqueda por usuario
+     * 
+     * Autor: Ricardo Quiroga
      */
     public function get_person_by_user($user)
     {
@@ -38,7 +41,10 @@ class Personas_model extends CI_Model {
     
     
     /*
-     * Obtiene los Datos de la Persona desde la Vista que mescla los datos persona con los de la Empresa
+     * Obtiene los Datos de la Persona desde la Vista que mescla los datos 
+     * persona con los de la Empresa
+     * 
+     * Autor: Ricardo Quiroga
      */ 
     public function get_person_by_id($id)
     {
@@ -77,7 +83,9 @@ class Personas_model extends CI_Model {
 
 
     /*
-     * Muestra Todas Las Personas
+     * Muestra Todas Las Personas sin discriminar si son clientes o proveedores
+     * 
+     * Autor: Ricardo Quiroga
      */ 
     public function all()
     {
@@ -88,6 +96,8 @@ class Personas_model extends CI_Model {
     
     /*
      * Muestra todos los que esten marcado como clientes
+     * 
+     * Autor: Ricardo Quiroga
      */ 
     public function all_clients()
     {
@@ -98,19 +108,37 @@ class Personas_model extends CI_Model {
 
     /*
      * Muestra todos los que esten marcados com Proveedor
+     * 
+     * Autor: Ricardo Quiroga
      */     
     public function all_proveedors()
     {
-        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE es_proveedor_pers = 1");
+        $query = $this->db->query("SELECT * FROM personaempresa WHERE es_proveedor_pers = 1");
         return $query->result_array();
     }
+    
     
     /*
      * Utiliza la busqueda sobre la vista mediante parecido osea LIKE
      * para buscar CLiente
+     * 
+     * Autor: Ricardo Quiroga
      */ 
     public function find_client($key, $val) {
         $query = $this->db->query("SELECT * FROM personaempresa WHERE ".$key." LIKE '%".$val."%' AND es_cliente_pers = 1;");
+        return $query->result_array(); 
+    }
+
+
+    /*
+     * Utiliza la busqueda sobre la vista mediante parecido osea LIKE
+     * para buscar Proveedores
+     * 
+     * Autor: Ricardo Quiroga
+     * 
+     */ 
+    public function find_proveedors($key, $val) {
+        $query = $this->db->query("SELECT * FROM personaempresa WHERE ".$key." LIKE '%".$val."%' AND es_proveedor_pers = 1;");
         return $query->result_array(); 
     }
 
@@ -125,6 +153,7 @@ class Personas_model extends CI_Model {
     
     /*
      * Actualiza un campo de un registro por id
+     * Autor: Ricardo Quiroga 
      */
     public function update_person_field($id_pers, $field, $val)
     {

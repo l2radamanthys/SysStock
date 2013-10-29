@@ -35,7 +35,7 @@
         <tr>
             <td><?=$pers['nombre_pers']?></td>
             <td><?=$pers['apellido_pers']?></td>
-            <td><?=$pers['fk_id_emp']?></td>
+            <td><?=$pers['razon_social_emp']?></td>
             <td><?=$pers['nro_dni_pers']?></td>
             <td><a href="<?=base_url()?>personas/show/<?=$pers['id_pers']?>">Mostrar</a></td>                        
         </tr>

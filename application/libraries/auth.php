@@ -33,7 +33,8 @@ class Auth {
                 $this->ci->session->set_userdata('login_role', $result['tipo_usr']);
                 $this->ci->session->set_userdata('login_name', $nombre);   
                 
-                $this->ci->usuarios_model->update_last_login($user);             
+                $this->ci->usuarios_model->update_last_login($user);  
+                return TRUE;           
             }
             else 
             {

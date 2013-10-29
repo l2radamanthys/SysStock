@@ -67,7 +67,7 @@ label {
 }
 
 .window h3 {
-    font-family: Segoe-UI;    
+    font-family: Segoe-UIL;    
     text-align: center;
     font-weight: 100;
     font-style: normal !important;
@@ -89,9 +89,26 @@ label {
 * Modificaciones Para JQuery UI
 ********************************************/
 
+.ui-datepicker {
+    width: 80%;
+}
+
 .ui-spinner {
     font-family: Segoe-UI !important; 
     font-size: 10pt !important;
+}
+
+.ui-datepicker-month, .ui-datepicker-year {
+    font-size: 10pt;
+}
+    
+.ui-datepicker th {
+    font-size: 10pt;
+    width: 10px;
+}
+
+.ui-datepicker .ui-state-default {
+    font-size: 10pt;
 }
 
 

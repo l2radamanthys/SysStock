@@ -7,6 +7,7 @@ INSERT INTO `empresas` (
 `es_proveedor`
 )
 VALUES 
+    (NULL , 'No Definido', '', '12-34567890-1', '1', '1'),
     (NULL , 'Empresa de Prueba', 'Responsable Inscripto', '11-12345678-1', '1', '1'),
     (NULL , 'Otra Empresa de Prueba', 'Responsable Inscripto', '11-12345679-2', '1', '1')
 ;
@@ -79,5 +80,14 @@ INSERT INTO `personas` (
     `fk_id_prov`, 
     `fk_id_emp`
     ) VALUES 
-    ('', '123', 'DNI', 'Juan ', 'Perez', 'mi kasa', 'user', '387-234-5678', '387-234-5678', 'user@usernet.com', NULL, '1', '1', '1', '1');    
+    ('', '123', 'DNI', 'Juan ', 'Perez', 'mi kasa', 'user', '387-234-5678', '387-234-5678', 'user@usernet.com', NULL, '1', '1', '1', '1')
+;    
 
+INSERT INTO  `categorias` (
+`id_cat` ,
+`nombre_cat`
+)
+VALUES 
+    (NULL ,  'Bebidas'), 
+    (NULL ,  'Lacteos')
+;

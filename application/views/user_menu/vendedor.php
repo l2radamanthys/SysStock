@@ -25,7 +25,16 @@
                         <li><a href="#">Buscar Pedido</a></li>
                         <li><a href="#">Nuevo Pedido</a></li>                                                                        
                     </ul></li>   
-                                 
+                              
+                    
+                    <li>&nbsp;</li>          
+                              
+                    <li><a href="#">Usuario</a>  
+                    <ul>
+                        <li><a href="#">Mis Datos</a></li>
+                        <li><a href="#">Cambiar Contraseña</a></li>
+                        <li><a href="<?=base_url()?>session/logout/">Cerrar Session</a></li>                                                                        
+                    </ul></li>          
             </ul>
             <div style="clear:both;"></div>
         </nav>

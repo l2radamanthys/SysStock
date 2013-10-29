@@ -21,10 +21,24 @@ class Articulos_model extends CI_Model {
      */
     public function register($data) 
     {
-        return $this->db->insert($this->table_name, $data);
+        if ($this->db->insert($this->table_name, $data)) 
+        {
+            return $this->db->insert_id();
+        }
+        else
+        {
+            return FALSE;        
+        }
     }
     
     
+    /*
+     * Autor: Ricardo Quiroga
+     */
+    public function exist($key, $val)
+    {
+        return FALSE;
+    }
     
     
     

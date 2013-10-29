@@ -23,6 +23,7 @@ class Articulos extends CI_Controller {
             $this->load->model('categorias_model');
             $this->load->library('form_validation');    
             $this->load->helper('form');
+            $this->load->helper('utils');
                         
             $data = array (
                 'page_title' => 'Nuevo Articulo',
@@ -38,25 +39,73 @@ class Articulos extends CI_Controller {
 
             $data['categorias'] = $this->categorias_model->all();
  
-            if ($this->form_validation->run('articulo') != FALSE)
-            {
-                #formulario enviado
-                $art_data = array(
-                    'nombre_art' => $this->input->post('nombre_art'),
-                );
-                
-                $lote_data = array(
-                
-                );
-                
-                print_r($art_data);
-            }
-            else 
+            if ($this->form_validation->run('articulo') === FALSE) 
             {
                 #formulario no enviado
                 $data['show_errors'] = TRUE;
                 $this->load->view('articulos/registrar', $data);
             } 
+            else           
+            
+            {
+                #formulario enviado
+                
+                $art_data = array(
+                    'codigo_art'=> blanc_to_null($this->input->post('codigo_art')),
+                    'nombre_art' => $this->input->post('nombre_art'),
+                    'precio_costo_art' => $this->input->post('precio_costo_art'),
+                    'precio_venta_art' => $this->input->post('precio_venta_art'),
+                    'precio_venta_lista_art' => $this->input->post('precio_venta_lista_art'),
+                    'stock_art' => 0, #no se registra stock inicial al ingreso
+                    'stock_min_art' => $this->input->post('stock_min_art'),
+                    'stock_max_art' => $this->input->post('stock_max_art'),
+                    'not_stock_art' => $this->input->post('not_stock_art'),
+                );
+                
+                $band = TRUE; #bandera de control de insercion
+                
+                if ($art_data['codigo_art'] != NULL) #¿existe un articulo con el mismo codigo?
+                {
+                    if ($this->articulos_model->exist('codigo_art', $art_data['codigo_art']))
+                    {
+                        #si ya se registro un articulo con ese codigo, lanzo el error
+                        $data['show_errors'] = TRUE;
+                        $data['custom_errors'] = "Error ya se registro un Articulo con dicho Codigo ";
+                        $band = FALSE;
+                    }
+                    else {
+                        #el codigo no esta asignado podemos continiar
+                        $band = TRUE;
+                    }
+                }
+                
+                if ($band)
+                {
+                    $id_art = $this->articulos_model->register($art_data);
+                    if ($id_art != FALSE) #no se registro el articulo
+                    {
+                        $artscat_data = array(
+                            'fk_id_art' => $id_art,    
+                            'fk_id_cat' => $this->input->post('id_cat'),
+                            'fk_id_scat' => $this->input->post('id_scat'),
+                        );
+                    }
+                    
+                
+                
+                }
+                else
+                {
+                    $this->load->view('articulos/registrar', $data);
+                    $data['show_errors'] = TRUE;
+                    $data['custom_errors'] = "Error ";
+                }    
+                
+                
+                #print_r($art_data);
+            }
+            
+            
             
             $this->load->view('footer', $data);   
                

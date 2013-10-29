@@ -138,12 +138,9 @@ class Personas extends CI_Controller {
             );
             $nav = $this->auth->user_get_nav();  
             $data['css_include'] = css_include('tables.css');               
-            
-            
 
             $this->load->view('header', $data);
-            $this->load->view($nav, $data);
-               
+            $this->load->view($nav, $data);             
                           
             if (!isset($_POST['field']))
             {
@@ -185,6 +182,7 @@ class Personas extends CI_Controller {
         if ($this->auth->user_is_logged() AND TRUE)
         {
             $this->load->model('personas_model');
+            $this->load->helper('form'); 
             $this->load->helper('utils');  
               
             $data = array(
@@ -192,24 +190,25 @@ class Personas extends CI_Controller {
                 'user' => $this->auth->user_get_login_info(),
             );
             $nav = $this->auth->user_get_nav();  
-            $data['css_include'] = css_include('tables.css');               
-            
-            
-            if(TRUE) 
+            $data['css_include'] = css_include('tables.css');     
+                      
+            $this->load->view('header', $data);
+            $this->load->view($nav, $data);  
+
+            if (!isset($_POST['field']))
             {
-                $data['personas'] = $this->personas_model->all_proveedors();    
+                $data['personas'] = $this->personas_model->all_proveedors();
             }
             else 
             {
-                $data['personas'] = $this->personas_model->all_proveedors();    
+                $key = $this->input->post('field');
+                $match = $this->input->post('query');                               
+                $data['personas'] = $this->personas_model->find_proveedors($key, $match);
             }
             
-
-            $this->load->view('header', $data);
-            $this->load->view($nav, $data);
             $this->load->view('personas/buscar_proveedor', $data);
             $this->load->view('footer');               
-               
+
         }    
         elseif ($this->auth->user_is_logged())
         {

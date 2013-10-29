@@ -24,20 +24,27 @@ class Session extends CI_Controller {
         $this->load->library('form_validation');
         
         #defino reglas para los campos de formulario
-        $this->form_validation->set_rules('username', 'Usuario', 'required');
-        $this->form_validation->set_rules('password', 'Contraseña', 'required');
-        
+
         $data = array(
             'page_title' => 'Iniciar Session',
         );
         
         if (!$this->auth->user_is_logged()) 
         {
-            if ($this->form_validation->run() !== FALSE)
+            
+            if ($this->form_validation->run('login') === FALSE)
             {
+                $this->load->view('header', $data);
+                $this->load->view('user_menu/not-login');
+                $this->load->view('session/login', $data);
+                $this->load->view('footer');
+                
+            }            
+            
+            else {
                 $user = $this->input->post('username');
                 $pswrd = $this->input->post('password');
-                $data['custom_error'] = "podyt";
+                
                 if ($this->auth->user_login($user, $pswrd)) 
                 {
                     redirect(base_url());
@@ -50,14 +57,7 @@ class Session extends CI_Controller {
                     $this->load->view('user_menu/not-login');
                     $this->load->view('session/login', $data);
                     $this->load->view('footer');  
-                }
-            }            
-            
-            else {
-                $this->load->view('header', $data);
-                $this->load->view('user_menu/not-login');
-                $this->load->view('session/login', $data);
-                $this->load->view('footer');
+                }    
             }   
         }
         

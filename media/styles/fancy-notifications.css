@@ -1,14 +1,12 @@
 .notify-info, .notify-success, .notify-alert, .notify-error{
 	font-family: Verdana, Geneva, Arial;
-	font-size: 11px;
-    border: 1px solid;
-    margin: 0 auto;
-    margin-top: 5px;
-    width: 500px;
-    
-    padding:15px 10px 15px 50px;
+	font-size: 10pt;
+    border: 1px solid #777;
+    margin: 3px auto;
+    padding: 7px 10px 7px 40px;
     background-repeat: no-repeat;
     background-position: 10px center;
+    box-shadow: 0px 0px 3px #777;    
 }
 
 .notify-info li, .notify-success li, .notify-alert li, .notify-error li{
@@ -19,6 +17,7 @@
     color: #00529B;
     background-color: #BDE5F8;
     background-image: url('../images/information.png');
+
 }
 
 .notify-success {
@@ -35,7 +34,7 @@
 
 .notify-error {
     color: #D8000C;
-    background-color: #FFBABA;
+    background-color: #FF8C8C;
     background-image: url('../images/error.png');
 }
 
