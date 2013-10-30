@@ -85,6 +85,25 @@
         $this->load->view("nav"); 
         $this->form_validation->set_rules('query','Query','required');
         
+        $this->load->model("empresas_model");
+        $empresas = array();
+        if($this -> form_validation ->run() == TRUE)
+        {//aqui me quede
+            if($this->input->post('razon_social') ==)
+            {                
+                
+            }
+            else
+            {
+                
+            }
+            $empresa = $this->empresas_model->consult_empresa($this->input->post('razon_social')")       
+        }
+        else
+        {
+            $this ->load ->view('empresa/buscar_empresa',$empresas) ; 
+        }
+        
     }
     
  }

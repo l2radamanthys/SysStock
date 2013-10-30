@@ -29,7 +29,7 @@
             <th>CUIT</th>
             
         </tr>
-    <? foreach ($empresas $emp): ?>            
+    <? foreach ($empresas as $emp): ?>            
         <tr>
             <td><?=$emp['razon_social_emp']?></td>
             <td><?=$emp['tipo_emp']?></td>            
