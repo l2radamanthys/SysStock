@@ -1,3 +1,14 @@
+
+
+<script type="text/javascript">
+    //ejecutar al inicio
+    $(function() {
+        //$('li a').button();   
+        
+        $("#accordion-menu").accordion();
+    });
+</script>    
+
 <section class="section">
     <h1>Detalle Articulo</h1>
     
@@ -74,10 +85,25 @@
     </table>
     
     <a href="<?=base_url();?>articulos/search">Atras..</a>
-    
 </section>
 
 
 <aside class="aside">
-    
+    <div id="accordion-menu" class="sub-menu">
+        <h3>Articulo</h3>
+        <div>
+        <ul class="child-menu">
+            <li><a href="">Modificar</a></li>
+            <li><a href="<?=base_url();?>articulos/update_price/<?=$art['id_art']?>">Actualizar Precios</a></li>
+            <li><a href="">Informar Perdida Stock</a></li>
+        </ul>
+        </div>
+        
+        <h3>Lote Articulo</h3>
+        <div>
+        <ul class="child-menu">
+            <li><a href="">Registrar Ingreso</a></li>
+        </ul>
+        </div>
+    </div>    
 </aside>

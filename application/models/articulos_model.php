@@ -64,6 +64,20 @@ class Articulos_model extends CI_Model {
      }    
         
         
-    
+     /*
+      * Actualizar datos del Articulo
+      * 
+      * Autor: Ricardo Quiroga
+      * 
+      * @param integer $id  hace referencia al id_art en la tabla
+      * @param array $data array con campos que se cambiaran
+      * @return boolean resultado de la ejecucion de la consulta
+      */
+     public function update($id, $data)
+     {
+         $this->db->where('id_art', $id);
+         $query = $this->db->update($this->table_name, $data);
+         return $query;
+     }
     
 }

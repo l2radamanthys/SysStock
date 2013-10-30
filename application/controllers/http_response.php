@@ -74,6 +74,68 @@ class Http_response extends CI_Controller {
     } 
 
     
+    /*
+     * Sencillo buscador de Articulos
+     * 
+     * requiere que se ingrese
+     * 
+     */ 
+    public function search_art($page=0)
+    {
+        $this->load->model('articulos_model');
+        $this->load->helper('utils');
+        $data = array();
+        
+        $query = $this->input->post('query');
+        if($query != "") 
+        {
+            $search = TRUE;
+        }
+        else 
+        {
+            $search = FALSE;
+        }
+        
+        //url destino
+        $data['label'] = $this->input->post('label');
+        $data['url'] = $this->input->post('url');
+        
+        //se hara busquera o mostrara todo
+        if ($search) 
+        {
+            //$articulos = array();
+            $data['articulos'] = $this->articulos_model->all();  
+              
+        }
+        else 
+        {
+            $data['articulos'] = $this->articulos_model->all(); 
+        }
+        
+        
+        #$this->load->view('header', $data);
+        
+        $this->load->view('httpresponse/search_art', $data);
+        
+    }
+    
+    
+    /*
+     * Buscador Articulos Proveedor
+     */
+    public function search_art_prov($id_prov)
+    {
+        
+    }
+
+    
+    /*
+     * Buscador de Articulos que no distribuye un proveedor
+     */
+    public function search_art_not_prov($id_prov)
+    {
+        
+    }
 }
 
 

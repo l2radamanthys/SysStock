@@ -23,5 +23,12 @@ $config = array(
         
     ),
     
+    'articulo_precio' => array(      
+        array('field' => 'precio_costo_art', 'label' => 'Precio Costo Articulo', 'rules' => 'required|numeric'),
+        array('field' => 'precio_venta_art', 'label' => 'Precio de Venta', 'rules' => 'required|numeric'),
+        array('field' => 'precio_venta_lista_art', 'label' => 'Precio de Lista', 'rules' => 'required|numeric'),
+        
+    ),
+    
 );
 

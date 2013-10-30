@@ -114,6 +114,7 @@
             <li><a href="">Presupuestos Solicitados</a></li>
         </ul>
         </div>
+        
         <h3>Pedidos</h3>
         <div>
         <ul class="child-menu">
@@ -122,13 +123,14 @@
             <li><a href="">Pedidos Pendientes</a></li>
         </ul>
         </div>    
-        <!--  
-        <li><a href="#">Remitos</a></li>
+
+        <h3>Remitos</h3>
+        <div>
         <ul class="child-menu">
             <li><a href="">Nuevo Remito Entrada</a></li>
             <li><a href="">Nuevo Remito Salida</a></li>
             <li><a href="">Remitos Pendiente</a></li>
         </ul>
-        -->
+        </div>
     </div>
 </aside>

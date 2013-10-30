@@ -9,6 +9,7 @@
     <h1>Buscar Articulos</h1>
     
     <div style="margin: 0 auto; width: 500px;" >
+        <form action="">
         <select name="field">
             <option value="codigo">Codigo</option>
             <option value="nombre" selected>Nombre</option>

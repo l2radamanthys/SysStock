@@ -213,5 +213,150 @@ class Articulos extends CI_Controller {
         }        
     }
     
+    /*
+     * Actualiza los Precio de Venta de los Articulos
+     * 
+     * Autor: Ricardo Quiroga
+     * 
+     */
+    public function update_price($id)
+    {                
+        if ($this->auth->user_is_logged() AND TRUE)
+        {
+            $this->load->library('form_validation');
+            $this->load->helper('form');
+            
+             $data = array (
+                'page_title' => 'Buscar Articulo',
+                'title' => 'Buscar Articulo',
+                'user' => $this->auth->user_get_login_info(),
+            );
+            $nav = $this->auth->user_get_nav();
+            $data['show_errors'] = TRUE;
+            $data['custom_error'] = '';
+            
+            
+            
+            if ($this->form_validation->run('articulo_precio') === FALSE)
+            {
+                $data['art'] = $this->articulos_model->get($id); 
+                
+                $this->load->view('header', $data);
+                $this->load->view($nav, $data);                                
+                $this->load->view('articulos/actualizar_precios', $data);
+                $this->load->view('footer', $data);    
+            }
+            else 
+            {
+                $art_data = array(
+                    'precio_costo_art' => $this->input->post('precio_costo_art'),
+                    'precio_venta_art' => $this->input->post('precio_venta_art'),
+                    'precio_venta_lista_art' => $this->input->post('precio_venta_lista_art'),
+                );
+                
+                if ($art_data['precio_costo_art'] >  $art_data['precio_venta_art'])
+                {
+                    $data['art'] = $this->articulos_model->get($id); 
+                    $data['custom_error'] = 'Error el Precio de Costo es Mayor que el Precio de Venta';    
+                        
+                    $this->load->view('header', $data);
+                    $this->load->view($nav, $data);                                
+                    $this->load->view('articulos/actualizar_precios', $data);
+                    $this->load->view('footer', $data); 
+                }
+                else 
+                {
+                    #grabamos y redirijimos al detalle de articulo
+                    $this->articulos_model->update($id, $art_data);                    
+                    redirect('articulos/show/'.$id);
+                }
+                
+            }
+        }    
+        elseif ($this->auth->user_is_logged())
+        {
+            #usuario logueado pero no tiene permisos    
+        }
+
+        else 
+        {
+            #usuario no logueado
+            redirect('/session/login');
+        }
+    }  
+
+    /*
+     * Modificar Datos Articulo
+     */
+    public function edit($id)
+    {
+        if ($this->auth->user_is_logged() AND TRUE)
+        {
+             
+               
+               
+        }    
+        elseif ($this->auth->user_is_logged())
+        {
+            #usuario logueado pero no tiene permisos    
+        }
+
+        else 
+        {
+            #usuario no logueado
+            redirect('/session/login');
+        }
+    }  
+
     
+    
+    /*
+     * Muestra los Articulos por Proveedor
+     */
+    public function show_proveedor_articles($id)
+    {
+        if ($this->auth->user_is_logged() AND TRUE)
+        {
+            $data = array (
+                'page_title' => 'Buscar Articulo',
+                'title' => 'Buscar Articulo',
+                'user' => $this->auth->user_get_login_info(),
+            );
+            $nav = $this->auth->user_get_nav();
+               
+               
+        }    
+        elseif ($this->auth->user_is_logged())
+        {
+            #usuario logueado pero no tiene permisos    
+        }
+
+        else 
+        {
+            #usuario no logueado
+            redirect('/session/login');
+        }
+    }  
+    
+    
+    public function test()
+    {
+        $this->load->helper('utils');
+        $data = array (
+            'page_title' => 'Buscar Articulo',
+            'title' => 'Buscar Articulo',
+            'user' => $this->auth->user_get_login_info(),
+        );
+        $nav = $this->auth->user_get_nav();
+        $data['css_include'] = css_include('tables.css'); //nec
+        
+        $this->load->view('header', $data);
+        $this->load->view($nav, $data);                                
+        $this->load->view('articulos/test', $data);
+        $this->load->view('footer', $data); 
+        
+        
+    }
+    
+
 }
