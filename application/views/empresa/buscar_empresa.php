@@ -10,7 +10,7 @@
     <h1>Buscar Empresas</h1>
     
     <div style="margin: 0 auto; width: 500px;" >
-        <?=form_open('');?>
+        <?=form_open('buscar_empresa/result');?>
         <select name="field" <?=set_select('field')?>>
             <option value="razon_social_emp">Razon Social</option>
             <option value="tipo_emp">Tipo</option>
@@ -29,14 +29,16 @@
             <th>CUIT</th>
             
         </tr>
-    <? foreach ($empresas as $emp): ?>            
+    <?  if((isset($data)))
+        {            
+        foreach ($data['empresas'] as $emp): ?>            
         <tr>
             <td><?=$emp['razon_social_emp']?></td>
             <td><?=$emp['tipo_emp']?></td>            
             <td><?=$emp['cuit_emp']?> </td>
-            <td><a href="<?=base_url()?>personas/show/<?=$pers['id_pers']?>">Mostrar</a></td>                        
+            <td><a href="">Mostrar</a></td>                        
         </tr>
-    <? endforeach; ?>    
+    <? endforeach; }?>    
     </table>
 
 </section>

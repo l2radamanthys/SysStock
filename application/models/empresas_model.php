@@ -52,11 +52,18 @@ class Empresas_model extends CI_Model {
     }
     
     
-    // realiza la consulta de una empresa
-    function consult_empresa($condition)
-    {
-        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$condition.";");
+    // realiza la busqueda de empresas con un like
+    function search_empresa($campo, $value)
+    {        
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$campo." LIKE '%".$value."%';");     
         return $query->row_array();
+    }
+    
+    //realiza la consulta de empresas
+    function consult_empresa($campo, $value)
+    {
+         $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$campo."=".$value.";");     
+         return $query->row_array();       
     }
     
     // modifica los datos

@@ -9,7 +9,9 @@
             <p>Empresa:<? echo set_value('razon_social'); ?>   
             <input type="hidden" name="id_empresa" value="<? echo set_value('razon_social'); ?>"/> 
             </p>
-            
+            <p>CUIT: <? echo set_value('cuit'); ?>
+                <input type="hidden" name="cuit" value="<? echo set_value('cuit'); ?>"/> 
+            </p>
             <p>Nombre Suc:
             <input type="text" name="sucursal" value="<? echo set_value('sucursal'); ?>"/>
             </p>

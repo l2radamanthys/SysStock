@@ -6,7 +6,8 @@
         <div class="win-cont">
         
             
-            <p>Se cargo correctamente</p>
+            <p><? echo "<p>".$empresa."</p>".
+                       "<p>".$sucursal."</p>"; ?></p>
         
         </div>
     </div>

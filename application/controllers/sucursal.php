@@ -23,8 +23,18 @@ class Sucursal extends CI_Controller
          $this->load->model("sucursal_model");
          
          $this->load->model('empresas_model'); 
-         
-         // $this ->load ->view('empresa/buscar_empresa') ;
+          if ($this->input->post('id_empresa')) 
+          {
+              $this ->load ->view('empresa/sucursal') ;         
+          } 
+          else
+          {
+              $this ->load ->view('empresa/buscar_empresa');
+          }
+          
+          
+          
+          $this->load->view("footer");
     }   
 }
 
