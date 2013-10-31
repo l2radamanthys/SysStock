@@ -30,5 +30,10 @@ $config = array(
         
     ),
     
+   'articulo_proveedor' => array(      
+        array('field' => 'precio_art', 'label' => 'Precio Venta Proveedor', 'rules' => 'required|numeric'),
+    ),
+    
+    
 );
 

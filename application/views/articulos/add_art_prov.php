@@ -9,16 +9,22 @@
     
     <h1>Registrar Articulo Proveedor</h1>
     
-    <div class="window" style="width: 300px; margin: 0 auto;">
+    <div class="window" style="width: 450px; margin: 0 auto;">
     <div class="win-cont">    
-    <?=form_open('articulos/add_proveedor_article')?>    
+    <form action="<?=base_url();?>articulos/add_proveedor_article/<?=$pers['id_pers']?>/<?=$art['id_art']?>" method="post">       
+        <p style="float: left; width: 160px;">
+        <label>Codigo Articulo:</label>
+        <?=$art['codigo_art']?>    
+        </p>
+        
         <p>
         <label>Nombre Articulo:</label>
         <?=$art['nombre_art']?>    
         </p>
+        <div style="clear: both;"></div> 
         
         <p>
-        <label>Proveedor:</label>
+        <label>Nombre Proveedor:</label>
         <?=$pers['nombre_pers']?>, <?=$pers['apellido_pers']?>     
         </p>
         
@@ -28,9 +34,9 @@
         </p>
         
         
-        <p>
+        <p style="float: left; width: 200px;">
         <label>Precio de Venta Proveedor:</label>
-        <input type="text" name="precio_venta_lista_art" id="precio_venta_civa_art" size="8" value="0.00" class="text-der"/>    
+        <input type="text" name="precio_art" id="precio_art" size="8" value="<?=set_value('precio_art',number_format($art['precio_costo_art'], 2))?>" class="text-der"/>    
         </p>   
         
         <p>
@@ -40,7 +46,13 @@
             <input type="radio" name="not_precio_art" value="0" id="not_precio_art1"/><label for="not_precio_art1" style="font-size: 10pt;">No</label>
          </div>   
         </p>
+        <div style="clear: both;"></div> 
         
+        <br />
+        <p style="text-align: center">
+            <input type="submit" value="Registrar" />
+            <input type="reset" value="Limpiar" />            
+        </p>        
     </form>  
     </div>
     </div> 

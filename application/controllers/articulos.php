@@ -350,9 +350,11 @@ class Articulos extends CI_Controller {
     {
         if ($this->auth->user_is_logged() AND TRUE)
         {
+            $this->load->model('articulosporproveedor_model');
             $this->load->library('form_validation');
             $this->load->helper('form');
             $this->load->helper('utils');
+            
             $data = array (
                 'page_title' => 'Buscar Articulo',
                 'title' => 'Buscar Articulo',
@@ -362,24 +364,32 @@ class Articulos extends CI_Controller {
             
             $this->load->view('header', $data);
             $this->load->view($nav, $data);  
+
+            print($id_pers);
+            echo "<br>";
+            print($id_art);
                
-            if ($this->form_validation->run('articulo_precio') == FALSE)
+            $data['art'] = $this->articulos_model->get($id_art);
+            $data['pers'] = $this->personas_model->get_person_by_id($id_pers);  
+               
+            if ($this->form_validation->run('articulo_proveedor') == FALSE)
             {
-                $data['art'] = $this->articulos_model->get($id_art);
-                $data['pers'] = $this->personas_model->get_person_by_id($id_pers);
-                
-                    
+
                 $this->load->view('articulos/add_art_prov', $data);
             }
             else                     
             {
+                $form_data = array(
+                    'fk_id_art' => $id_art,
+                    'fk_id_pers' => $id_pers,
+                    'precio_artprov' => $this->input->post('precio_art'),
+                    'recordar_act_prec_artprov' => $this->input->post('not_precio_art'),
+                );
+                print_r($form_data);
+                $this->articulosporproveedor_model->register($form_data);
                 
+                $this->load->view('articulos/add_art_prov_ok', $data);
             }
-            
-            
-            
-            
-            
             $this->load->view('footer', $data);   
                
         }    
