@@ -3,15 +3,15 @@
  * Modelo de sucursales
  */
 
- class Sucursal_model extends CI_Controller
+ class Sucursal_model extends CI_Model
  {
      // Sucursal
      function __construct()
      {         
        // $this->load->database(); 
-        $this-> table_name = 'sucursal'; 
-        $this-> fk_id_emp =0;
-        $this-> data =array();      
+        $this->table_name = 'sucursal'; 
+        $this->fk_id_emp =0;
+        $this->data =array();      
      }
      
      // registra una nueva sucursal
