@@ -48,6 +48,12 @@ input[type=submit], input[type=reset], input[type=button]{
 }
 
 
+input[type=radio] {
+    padding-top: 13px !important;
+    padding-bottom: 10px !important;    
+}
+
+
 label {
     font-family: Segoe-UI;
     font-size: 10pt;
@@ -119,8 +125,11 @@ label {
     padding-bottom: 10px !important;    
 }
 
-
-
+span.ui-button-text {
+    padding-top: 5px !important;
+    padding-bottom: 3px !important;   
+    
+}
 /*************************************
  *Funciones  Auxiliares
  * ******************************* */

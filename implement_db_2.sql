@@ -98,3 +98,24 @@ CREATE  TABLE IF NOT EXISTS `LoteArticulos` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_spanish2_ci;
+
+CREATE  TABLE IF NOT EXISTS `ArticulosPorProveedor` (
+  `fk_id_art` INT NOT NULL ,
+  `precio_artprov` DECIMAL(19,4) NULL ,
+  `ult_fecha_act_artprov` TIMESTAMP NULL DEFAULT NOW(),
+  `recordar_act_prec_artprov` TINYINT(1) NULL ,
+  `fk_id_pers` INT NOT NULL ,
+  INDEX `fk_Articulos_ArticulosPorProveedor1_idx` (`fk_id_art` ASC) ,
+  INDEX `fk_Personas_ArticulosPorProveedor1_idx` (`fk_id_pers` ASC) ,
+  PRIMARY KEY (`fk_id_art`, `fk_id_pers`) ,
+  CONSTRAINT `fk_Articulos_ArticulosPorProveedor1`
+    FOREIGN KEY (`fk_id_art` )
+    REFERENCES `Articulos` (`id_art` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Personas_ArticulosPorProveedor1`
+    FOREIGN KEY (`fk_id_pers` )
+    REFERENCES `Personas` (`id_pers` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;

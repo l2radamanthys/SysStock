@@ -339,6 +339,63 @@ class Articulos extends CI_Controller {
     }  
     
     
+    /*
+     * Agregar un Articulo A un Proveedor
+     * 
+     * @param integer $id_pers
+     * @param integer $id_art
+     * 
+     */    
+    public function add_proveedor_article($id_pers, $id_art)
+    {
+        if ($this->auth->user_is_logged() AND TRUE)
+        {
+            $this->load->library('form_validation');
+            $this->load->helper('form');
+            $this->load->helper('utils');
+            $data = array (
+                'page_title' => 'Buscar Articulo',
+                'title' => 'Buscar Articulo',
+                'user' => $this->auth->user_get_login_info(),
+            );   
+            $nav = $this->auth->user_get_nav();
+            
+            $this->load->view('header', $data);
+            $this->load->view($nav, $data);  
+               
+            if ($this->form_validation->run('articulo_precio') == FALSE)
+            {
+                $data['art'] = $this->articulos_model->get($id_art);
+                $data['pers'] = $this->personas_model->get_person_by_id($id_pers);
+                
+                    
+                $this->load->view('articulos/add_art_prov', $data);
+            }
+            else                     
+            {
+                
+            }
+            
+            
+            
+            
+            
+            $this->load->view('footer', $data);   
+               
+        }    
+        elseif ($this->auth->user_is_logged())
+        {
+            #usuario logueado pero no tiene permisos    
+        }
+
+        else 
+        {
+            #usuario no logueado
+            redirect('/session/login');
+        }
+    }  
+    
+    
     public function test()
     {
         $this->load->helper('utils');
