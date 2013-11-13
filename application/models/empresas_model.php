@@ -54,9 +54,12 @@ class Empresas_model extends CI_Model {
     
     // realiza la busqueda de empresas con un like
     function search_empresa($campo, $value)
-    {        
-        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$campo." LIKE '%".$value."%';");     
-        return $query->row_array();
+    {
+        $sentencia =  "SELECT * FROM ".$this->table_name." WHERE ".$campo." LIKE '%".$value."%';" ; 
+        #print $sentencia;     
+        $query = $this->db->query($sentencia);   
+        #print_r($query->result_array());  
+        return $query->result_array();
     }
     
     //realiza la consulta de empresas

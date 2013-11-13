@@ -1,6 +1,6 @@
 ﻿<content class="one-section">
     
-    <div class="window" style="width: 220px; margin: 20px auto;">
+    <div class="window" style="width: 350px; margin: 20px auto;">
         <h3>Registro de Empresas</h3> 
         
         <div class="win-cont">

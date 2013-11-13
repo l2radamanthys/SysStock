@@ -40,13 +40,12 @@
                 $form_data = array(
                     'razon_social_emp' => $this->input->post('razon_social'),
                     'tipo_emp' => $this->input->post('tipo'),
-                    'cuit_emp' => $this->input->post('cuit')
-                  
+                    'cuit_emp' => $this->input->post('cuit')                  
                 );
                 
                 if($this->empresas_model->register($form_data))
                 {
-                    $empresa = $this->empresas_model->search_empresa('cuit_emp', $this->input->post('cuit'));
+                    $empresa = $this->empresas_model->consult_empresa('cuit_emp', $this->input->post('cuit'));
                     
                     $data_sucursal= array(
                         'fk_id_emp'=>$empresa["id_emp"],
@@ -63,25 +62,31 @@
                     );  
                               
                     if($this->sucursal_model->new_sucursal($data_sucursal))
-                    {                      
-                        $this ->load ->view('empresa/registro_success',"Empresa registrada correctamente","Sucursal Agregada Correctamente") ;                    
+                    {
+                        $data['empresa'] ="Empresa registrada correctamente";   
+                        $data['sucursal'] = "Sucursal Agregada Correctamente";                   
+                                         
                     }
                     else
-                    {	                    
-                        $this ->load ->view('empresa/registro_success',"Empresa registrada correctamente","Fallo en la insersion") ;  
+                    {
+                        $data['empresa'] = "Empresa registrada correctamente" ;
+                        $data['sucursal'] = "Fallo en la insersion";	                   
+                        
                     }
                   }
                   else
                   {
-                      $this ->load ->view('empresa/registro_success',"Fallo en la carga de datos de empresas","") ;
+                      $data['empresa'] = "Fallo en la carga de datos de empresas" ;
+                      $data['sucursal'] = "";                      
                   }               
                                     
             }             
             else
             {
-                $this ->load ->view('empresa/registro_success',"Empresa ya registrada","") ;    
-            }                         
-                   
+                $data['empresa'] = "Empresa ya registrada";
+                $data['sucursal'] ="" ;                   
+            }
+            $this ->load ->view('empresa/registro_success',$data) ;      
         } 
         else 
         {
@@ -96,7 +101,9 @@
     {
         $this->load->model("empresas_model");    
         $this->load->library('form_validation');        
-        $this->form_validation->set_rules('query','Query','required');
+        #$this->form_validation->set_rules('query','Query','required');
+        $this->load->helper('utils');
+        
         
         $data = array (
              'page_title' => 'Nuevo Articulo',
@@ -104,21 +111,35 @@
              'user' => $this->auth->user_get_login_info(),
         );
         
-        $this->load->view("header");
-        $this->load->view("nav"); 
+        $data['css_include'] = css_include('tables.css');
         
-        if($this -> form_validation ->run() == TRUE)
+        $this->load->view("header", $data);
+        $this->load->view("nav", $data); 
+        
+        
+        
+        if(isset($_POST['query']))
         {                          
-            $campo = $this->input->post('query');            
-            $data['empresas'] = $this->empresas_model->consult_empresa($this->input->post('field'),$campo);  
-            
-            $this ->load ->view('empresa/buscar_empresa',$data['empresas']) ;      
+            $valor = $this->input->post('query');          
+            $campo =  $this->input->post('field');
+            $data['empresas'] = $this->empresas_model->search_empresa($campo,$valor);  
+                  
         }
         else
         {
-            $this ->load ->view('empresa/buscar_empresa') ; 
+            $data['empresas'] = $this->empresas_model->all_by_name(); 
+             
         }
+        $this ->load ->view('empresa/buscar_empresa',$data) ;
         $this->load->view("footer");
+    }
+
+
+    //modificar empresas
+    function modificar_empresas()
+    {
+        
+        
     }
     
  }

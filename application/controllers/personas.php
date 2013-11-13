@@ -72,7 +72,7 @@ class Personas extends CI_Controller {
                     'celular_pers' => $this->input->post('celular_pers'),
                     'email_pers' => $this->input->post('email_pers'),
                     'observaciones_pers' => $this->input->post('observaciones_pers'),
-                    'direccion_pers' => $this->input->post('direccion'),
+                    'direccion_pers' => $this->input->post('direccion_pers'),
                     'es_cliente_pers' => $data['is_cliente'],
                     'es_proveedor_pers' => $data['is_proveedor'],
                     #lo mismo que con empresas, si no seleciona se pone a null
