@@ -144,7 +144,7 @@
         <h3>Articulos por Proveedor</h3>
         <div>
         <ul class="child-menu">
-            <li><a href="">Listado Articulo Proveedor</a></li>
+            <li><a href="<?=base_url();?>articulos/show_by_supplier/<?=$pers['id_pers']?>">Listado Articulo Proveedor</a></li>
             <li><a href="javascript:void(0)" onclick="showModal();">Nuevo Articulo Proveedor</a></li>
         </ul>
         </div>   

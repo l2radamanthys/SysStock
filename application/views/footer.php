@@ -5,7 +5,7 @@
 
     <div class="footer-cont">
       <footer class="footer">
-          <p> Copyright (C) 2013</p>
+          <p> Copyright InfraSoft (C) 2013</p>
       </footer>
     </div>
 
