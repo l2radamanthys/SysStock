@@ -95,6 +95,7 @@
         <ul class="child-menu">
             <li><a href="">Modificar</a></li>
             <li><a href="<?=base_url();?>articulos/update_price/<?=$art['id_art']?>">Actualizar Precios</a></li>
+            <li><a href="">Agregar a Sub Categoria</a></li>
             <li><a href="">Informar Perdida Stock</a></li>
         </ul>
         </div>

@@ -259,8 +259,7 @@ class Personas extends CI_Controller {
             $nav = $this->auth->user_get_nav(); 
             
             $data['css_include'] = css_include('tables.css'); 
-            
-            
+
             $pers = $this->personas_model->get_person_by_id($id);
             $data['pers'] = $pers;
             $data['pers']['prov'] = $this->provincias_model->get_name($pers['fk_id_prov']);

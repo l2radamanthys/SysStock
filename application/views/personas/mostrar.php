@@ -36,7 +36,6 @@
                 //$("#dialog").dialog('close');
             }    
         });        
-        
     }
     
     //ejecutar al inicio
@@ -123,11 +122,11 @@
     </table>
     </div>
     </div>
-    
+    <!--
     <br />
     <br />
     <a href="<?=base_url()?>personas/search/cliente/">Volver Atras</a>
-    
+    -->
 </section>
 
 <aside class="aside">
