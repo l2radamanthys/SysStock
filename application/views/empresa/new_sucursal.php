@@ -57,16 +57,16 @@
             <input type="text" name="razon_social" value="<? echo set_value('razon_social');?>"  size="30"/>    
             
             <label>Tipo :</label> 
-            <input type="text" name="razon_social" value="<? echo set_value('razon_social');?>"  size="20"/>          
+            <input type="text" name="tipo" value="<? echo set_value('tipo');?>"  size="20"/>          
         </div>
         <div class="der">
             <label> Cuit:</label> 
-            <input type="text" name="razon_social" value="<? echo set_value('razon_social');?>"  size="12"/>  
+            <input type="text" name="cuit" value="<? echo set_value('cuit');?>"  size="12"/>  
         </div> 
         <div class="izq">
             <p>
                 <label>Nombre Sucursal: </label>
-                <input type="text" name="nombre" value="<? echo set_value('direccion'); ?>" id="direccion" size="40"/>
+                <input type="text" name="nombre" value="<? echo set_value('nombre'); ?>" id="nombre" size="40"/>
             </p>
         </div>
         <div class="der">
