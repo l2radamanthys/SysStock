@@ -13,8 +13,6 @@ class Articulos extends CI_Controller {
      * 
      * Autor: Ricardo Quiroga
      * 
-     * Observaciones: NO FUNCIONA, por alguna razon no se envia el formulario o la aplicacion 
-     * no lo toma nose que pasa, revisar mas tarde
      */     
     public function create() 
     {
@@ -175,6 +173,8 @@ class Articulos extends CI_Controller {
      * Muestra la Informacion del articulo
      * 
      * Autor: Ricardo Quiroga
+     * 
+     * @param $id_art id correspondiente al articulo
      */
     public function show($id_art)
     {
@@ -311,20 +311,36 @@ class Articulos extends CI_Controller {
     
     
     /*
-     * Muestra los Articulos por Proveedor
+     * Muestra listado de Articulos por Proveedor
+     * 
+     * @param $id corresponde al id del proveedor
      */
-    public function show_proveedor_articles($id)
+    public function show_by_supplier($id)
     {
         if ($this->auth->user_is_logged() AND TRUE)
         {
+            $this->load->model('personas_model');
+            $this->load->model('articulosporproveedor_model');
+            $this->load->helper('utils');
+            
             $data = array (
-                'page_title' => 'Buscar Articulo',
-                'title' => 'Buscar Articulo',
+                'page_title' => 'Articulos Por Proveedor',
+                'title' => 'Listado de Articulos',
                 'user' => $this->auth->user_get_login_info(),
             );
             $nav = $this->auth->user_get_nav();
+            
+            $data['css_include'] = css_include('tables.css'); 
                
-               
+            $this->load->view('header', $data);
+            $this->load->view($nav, $data);  
+              
+            $data['prov'] = $this->personas_model->get_person_by_id($id);
+            $data['articulos'] = $this->articulosporproveedor_model->filter_art($id);
+            
+            $this->load->view('articulos/mostrar_por_proveedor', $data);
+            $this->load->view('footer', $data);
+
         }    
         elseif ($this->auth->user_is_logged())
         {
@@ -365,9 +381,9 @@ class Articulos extends CI_Controller {
             $this->load->view('header', $data);
             $this->load->view($nav, $data);  
 
-            print($id_pers);
-            echo "<br>";
-            print($id_art);
+            #print($id_pers);
+            #echo "<br>";
+            #print($id_art);
                
             $data['art'] = $this->articulos_model->get($id_art);
             $data['pers'] = $this->personas_model->get_person_by_id($id_pers);  
@@ -385,7 +401,7 @@ class Articulos extends CI_Controller {
                     'precio_artprov' => $this->input->post('precio_art'),
                     'recordar_act_prec_artprov' => $this->input->post('not_precio_art'),
                 );
-                print_r($form_data);
+                #print_r($form_data);
                 $this->articulosporproveedor_model->register($form_data);
                 
                 $this->load->view('articulos/add_art_prov_ok', $data);

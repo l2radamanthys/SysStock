@@ -1,7 +1,9 @@
 
 <script type="text/javascript">
     $(function() {
-        $('#not_precio_art').buttonset()
+        $('#not_precio_art').buttonset();
+        $('#submit').button();
+        $('#reset').button();
     });  
 </script>
 
@@ -50,8 +52,8 @@
         
         <br />
         <p style="text-align: center">
-            <input type="submit" value="Registrar" />
-            <input type="reset" value="Limpiar" />            
+            <input type="submit" value="Registrar" id="submit" />
+            <input type="reset" value="Limpiar" id="reset" />            
         </p>        
     </form>  
     </div>

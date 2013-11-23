@@ -18,7 +18,7 @@
             <br />
             
             <p style="text-align:center">
-                <a href="<?=base_url();?>articulos/search" id="button">Continuar</a>
+                <a href="<?=base_url();?>articulos/show_by_supplier/<?=$pers['id_pers']?>" id="button">Continuar</a>
             </p>
         </div>
     </div>

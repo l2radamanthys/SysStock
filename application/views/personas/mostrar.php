@@ -36,7 +36,6 @@
                 //$("#dialog").dialog('close');
             }    
         });        
-        
     }
     
     //ejecutar al inicio
@@ -123,11 +122,11 @@
     </table>
     </div>
     </div>
-    
+    <!--
     <br />
     <br />
     <a href="<?=base_url()?>personas/search/cliente/">Volver Atras</a>
-    
+    -->
 </section>
 
 <aside class="aside">
@@ -144,7 +143,7 @@
         <h3>Articulos por Proveedor</h3>
         <div>
         <ul class="child-menu">
-            <li><a href="">Listado Articulo Proveedor</a></li>
+            <li><a href="<?=base_url();?>articulos/show_by_supplier/<?=$pers['id_pers']?>">Listado Articulo Proveedor</a></li>
             <li><a href="javascript:void(0)" onclick="showModal();">Nuevo Articulo Proveedor</a></li>
         </ul>
         </div>   
